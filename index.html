@@ -3,60 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Análise técnica e monitoramento de preços de hardware. Economize com o Tech Analytics.">
+    <meta name="description" content="Monitoramento de preços de hardware em tempo real.">
     <title>Tech Analytics | Monitor de Mercado</title>
     <style>
         /* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
-        :root { --bg: #0d1117; --card: #161b22; --accent: #00ff7f; --border: #30363d; --text: #f0f6fc; }
+        /* Status: All Rights Reserved */
+        
+        :root {
+            --bg: #0d1117; 
+            --card: #161b22; 
+            --accent: #00ff7f; 
+            --border: #30363d; 
+            --text: #f0f6fc;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; min-height: 100vh; }
-        h1 { color: var(--accent); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 50px; text-shadow: 0 0 15px rgba(0, 255, 127, 0.3); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s ease; position: relative; }
+
+        body {
+            background-color: var(--bg); color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 40px 20px; min-height: 100vh;
+        }
+
+        h1 { 
+            color: var(--accent); text-transform: uppercase; letter-spacing: 6px; 
+            margin-bottom: 50px; text-shadow: 0 0 15px rgba(0, 255, 127, 0.3); 
+        }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; width: 100%; max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px; text-align: center;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: 0.3s ease;
+        }
+
         .card:hover { border-color: var(--accent); transform: translateY(-10px); }
-        .badge { position: absolute; top: 15px; right: 15px; background: rgba(0, 255, 127, 0.1); color: var(--accent); padding: 5px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: bold; }
-        .img-box { width: 100%; height: 220px; background: #ffffff; border-radius: 12px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; padding: 15px; }
+
+        /* Container das Imagens (Gaveta assets/img) */
+        .img-box {
+            width: 100%; height: 220px; background: #ffffff;
+            border-radius: 12px; margin-bottom: 25px;
+            display: flex; align-items: center; justify-content: center; padding: 15px;
+        }
+
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .price-box { background: rgba(0, 255, 127, 0.05); border-radius: 12px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(0, 255, 127, 0.2); }
+
+        .price-box {
+            background: rgba(0, 255, 127, 0.05); border-radius: 12px;
+            padding: 20px; margin-bottom: 25px; border: 1px solid rgba(0, 255, 127, 0.2);
+        }
+
         .val { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
-        .old-price { font-size: 0.9rem; color: #484f58; text-decoration: line-through; display: block; }
-        .btn { background: var(--accent); color: #0d1117; padding: 18px; text-decoration: none; font-weight: 900; border-radius: 10px; display: block; text-transform: uppercase; }
-        .seo-content { max-width: 800px; margin: 60px 0; line-height: 1.8; color: #8b949e; text-align: justify; }
-        footer { margin-top: auto; padding: 60px 0 20px; color: #484f58; font-family: monospace; font-size: 0.85rem; text-align: center; border-top: 1px solid var(--border); width: 100%; }
+
+        .btn {
+            background: var(--accent); color: #0d1117; padding: 18px;
+            text-decoration: none; font-weight: 900; border-radius: 10px;
+            display: block; text-transform: uppercase;
+        }
+
+        footer { 
+            margin-top: auto; padding: 60px 0 20px; color: #484f58; 
+            font-family: monospace; font-size: 0.85rem; text-align: center; 
+            border-top: 1px solid var(--border); width: 100%; 
+        }
     </style>
 </head>
 <body>
+
     <h1>TECH ANALYTICS</h1>
+
     <main class="grid">
         <article class="card">
-            <span class="badge">🔥 MELHOR PREÇO</span>
-            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
-            <h3>SSD Kingston NV3 1TB NVMe</h3>
-            <div class="price-box"><span class="old-price">R$ 1.150,00</span><span class="val">R$ 928,00</span></div>
-            <a href="https://amzn.to/3ZWTuyA" target="_blank" rel="noopener noreferrer" class="btn">PEGAR OFERTA</a>
+            <div class="img-box">
+                <img src="assets/img/ssd-1tb.png" alt="SSD 1TB">
+            </div>
+            <h3>SSD Kingston NV3 1TB M.2 2280 NVMe</h3>
+            <div class="price-box"><span class="val">R$ 943,99</span></div>
+            <a href="https://amzn.to/3ZWTuyA" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
+
         <article class="card">
-            <span class="badge">💎 RECOMENDADO</span>
-            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
-            <h3>SSD Kingston NV3 500GB NVMe</h3>
-            <div class="price-box"><span class="old-price">R$ 780,00</span><span class="val">R$ 659,00</span></div>
-            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">PEGAR OFERTA</a>
+            <div class="img-box">
+                <img src="assets/img/ssd-500gb.png" alt="SSD 500GB">
+            </div>
+            <h3>SSD Kingston NV3 500GB M.2 2280 NVMe</h3>
+            <div class="price-box"><span class="val">R$ 659,00</span></div>
+            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
+
         <article class="card">
-            <span class="badge">⚡ ALTA PROCURA</span>
-            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM 16GB"></div>
-            <h3>RAM Kingston Fury Beast 16GB</h3>
-            <div class="price-box"><span class="old-price">R$ 1.250,00</span><span class="val">R$ 1.099,99</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">PEGAR OFERTA</a>
+            <div class="img-box">
+                <img src="assets/img/ram-16gb.png" alt="Memória RAM 16GB">
+            </div>
+            <h3>RAM Kingston Fury Beast 16GB DDR4</h3>
+            <div class="price-box"><span class="val">R$ 1.099,99</span></div>
+            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
     </main>
-    <section class="seo-content">
-        <h2 style="color: var(--accent); margin-bottom: 15px;">Hardware para ADS</h2>
-        <p>No mercado de <strong>Análise e Desenvolvimento de Sistemas</strong>, performance é lucro. Monitoramos os melhores componentes para o seu setup profissional.</p>
-    </section>
+
     <footer>
         <p>// (c) 2026 Guillermo Roger Hernandez Chandia - ADS</p>
         <p>Status: All Rights Reserved</p>
     </footer>
+
 </body>
 </html> 
