@@ -1,74 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Monitoramento de preços reais de hardware: SSD Kingston 1TB, 500GB e RAM 16GB. Tech Analytics - Honestidade e precisão.">
-    <meta name="keywords" content="SSD Kingston, RAM Kingston, Preço Hardware, Monitor de Mercado, ADS, Tech Analytics, Guillermo Roger">
+    <meta name="description" content="Monitoramento de preços reais de hardware. Tech Analytics - Honestidade e precisão.">
     <meta name="author" content="Guillermo Roger Hernandez Chandia">
-    <link rel="canonical" href="https://roger7927.github.io/monitor-mercado/">
     <title>Tech Analytics | Monitor de Mercado</title>
     <style>
-    /* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
-        /* Status: All Rights Reserved */
-        
+        /* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
         :root {
-            --bg: #0d1117; 
-            --card: #161b22; 
-            --accent: #00ff7f; 
-            --border: #30363d; 
-            --text: #f0f6fc;
+            --bg: #0d1117; --card: #161b22; --accent: #00ff7f; 
+            --border: #30363d; --text: #f0f6fc;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             background-color: var(--bg); color: var(--text);
             font-family: 'Segoe UI', system-ui, sans-serif;
             display: flex; flex-direction: column; align-items: center;
             padding: 40px 20px; min-height: 100vh;
         }
-
         h1 { 
             color: var(--accent); text-transform: uppercase; letter-spacing: 6px; 
             margin-bottom: 50px; text-shadow: 0 0 15px rgba(0, 255, 127, 0.3); 
         }
-
         .grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px; width: 100%; max-width: 1200px;
         }
-
         .card {
             background: var(--card); border: 1px solid var(--border);
             border-radius: 20px; padding: 30px; text-align: center;
             display: flex; flex-direction: column; justify-content: space-between;
             transition: 0.3s ease;
         }
-
         .card:hover { border-color: var(--accent); transform: translateY(-10px); }
-
-        /* Container das Imagens (Gaveta assets/img) */
         .img-box {
             width: 100%; height: 220px; background: #ffffff;
             border-radius: 12px; margin-bottom: 25px;
             display: flex; align-items: center; justify-content: center; padding: 15px;
         }
-
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
         .price-box {
             background: rgba(0, 255, 127, 0.05); border-radius: 12px;
             padding: 20px; margin-bottom: 25px; border: 1px solid rgba(0, 255, 127, 0.2);
         }
-
         .val { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
-
         .btn {
             background: var(--accent); color: #0d1117; padding: 18px;
             text-decoration: none; font-weight: 900; border-radius: 10px;
             display: block; text-transform: uppercase;
         }
-
         footer { 
             margin-top: auto; padding: 60px 0 20px; color: #484f58; 
             font-family: monospace; font-size: 0.85rem; text-align: center; 
@@ -82,55 +63,33 @@
 
     <main class="grid">
         <article class="card">
-            <div class="img-box">
-                <img src="assets/img/ssd-1tb.png" alt="SSD 1TB">
-            </div>
+            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
             <h3>SSD Kingston NV3 1TB M.2 2280 NVMe</h3>
             <div class="price-box"><span class="val">R$ 943,99</span></div>
-            <a href="https://amzn.to/3ZWTuyA" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/3ZWTuya" target="_blank" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
-            <div class="img-box">
-                <img src="assets/img/ssd-500gb.png" alt="SSD 500GB">
-            </div>
+            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
             <h3>SSD Kingston NV3 500GB M.2 2280 NVMe</h3>
             <div class="price-box"><span class="val">R$ 659,00</span></div>
-            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4tXfI0S" target="_blank" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
-            <div class="img-box">
-                <img src="assets/img/ram-16gb.png" alt="Memória RAM 16GB">
-            <article class="card">
-            <div class="img-box">
-                <img src="assets/img/ram-16gb.png" alt="Memória RAM 16GB">
-            </div>
+            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="Memória RAM 16GB"></div>
             <h3>RAM Kingston Fury Beast 16GB DDR4</h3>
             <div class="price-box"><span class="val">R$ 1.099,00</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4rJGxo6" target="_blank" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
-            <div class="img-box">
-                <img src="https://m.media-amazon.com/images/I/911u6p2eS0L._AC_SL1500_.jpg" alt="SSD Kingston 480GB">
-            </div>
+            <div class="img-box"><img src="https://m.media-amazon.com/images/I/911u6p2eS0L._AC_SL1500_.jpg" alt="SSD Kingston 480GB"></div>
             <h3>SSD Kingston A400 480GB SATA 3</h3>
             <div class="price-box"><span class="val">R$ 229,90</span></div>
-            <a href="https://amzn.to/4732WUQ" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4732WUQ" target="_blank" class="btn">Ver Oferta</a>
         </article>
-
-    </main> <footer> <p>// (c) 2026 Guillermo Roger Hernandez Chandia - ADS</p>
-        <p>Status: All Rights Reserved (Todos os Direitos Reservados)</p>
-        <br>
-        <p style="font-size: 0.75rem; color: #8b949e; max-width: 600px; margin: 0 auto; line-height: 1.4;">
-            <strong>AVISO DE TRANSPARÊNCIA:</strong> Este site é uma ferramenta de monitoramento técnico. 
-            Ao clicar em "Ver Oferta", você será levado ao site oficial da Amazon.
-        </p>
-    </footer>
-
-</body>
-</html>
+    </main>
 
     <footer>
         <p>// (c) 2026 Guillermo Roger Hernandez Chandia - ADS</p>
@@ -138,11 +97,9 @@
         <br>
         <p style="font-size: 0.75rem; color: #8b949e; max-width: 600px; margin: 0 auto; line-height: 1.4; font-family: sans-serif;">
             <strong>AVISO DE TRANSPARÊNCIA:</strong> Este site é uma ferramenta de monitoramento técnico. 
-            <strong>NÃO</strong> realizamos vendas diretas e <strong>NÃO</strong> solicitamos dados de cartão ou CPF. 
-            Ao clicar em "Ver Oferta", você será levado ao site oficial da Amazon para concluir sua compra com segurança. 
-            Preços verificados manualmente para garantir a integridade das informações.
+            <strong>NÃO</strong> realizamos vendas diretas. Ao clicar em "Ver Oferta", você será levado ao site oficial da Amazon para concluir sua compra com segurança.
         </p>
     </footer>
 
 </body>
-</html> 
+</html>
