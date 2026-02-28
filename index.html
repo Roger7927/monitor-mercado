@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Monitoramento de preços reais de hardware. Tech Analytics - Honestidade e precisão.">
-    <meta name="author" content="Guillermo Roger Hernandez Chandia">
+    <meta name="description" content="Monitoramento técnico de hardware. Tech Analytics - Guillermo Roger Hernandez Chandia.">
     <title>Tech Analytics | Monitor de Mercado</title>
     <style>
         /* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
@@ -12,48 +11,77 @@
             --bg: #0d1117; --card: #161b22; --accent: #00ff7f; 
             --border: #30363d; --text: #f0f6fc;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: var(--bg); color: var(--text);
             font-family: 'Segoe UI', system-ui, sans-serif;
             display: flex; flex-direction: column; align-items: center;
-            padding: 40px 20px; min-height: 100vh;
+            padding: 50px 20px; min-height: 100vh;
         }
+
         h1 { 
-            color: var(--accent); text-transform: uppercase; letter-spacing: 6px; 
-            margin-bottom: 50px; text-shadow: 0 0 15px rgba(0, 255, 127, 0.3); 
+            color: var(--accent); text-transform: uppercase; letter-spacing: 8px; 
+            margin-bottom: 60px; text-shadow: 0 0 15px rgba(0, 255, 127, 0.4);
+            font-size: 2.5rem;
         }
+
+        /* GRID CORRIGIDO PARA NÃO GRUDAR */
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px; width: 100%; max-width: 1200px;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px; /* AUMENTADO PARA SEPARAÇÃO TOTAL */
+            width: 100%; max-width: 1400px;
         }
+
         .card {
             background: var(--card); border: 1px solid var(--border);
-            border-radius: 20px; padding: 30px; text-align: center;
-            display: flex; flex-direction: column; justify-content: space-between;
-            transition: 0.3s ease;
+            border-radius: 20px; padding: 35px; text-align: center;
+            display: flex; flex-direction: column; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); }
+
+        .card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-12px);
+            box-shadow: 0 10px 30px rgba(0, 255, 127, 0.15);
+        }
+
         .img-box {
-            width: 100%; height: 220px; background: #ffffff;
+            width: 100%; height: 200px; background: #ffffff;
             border-radius: 12px; margin-bottom: 25px;
             display: flex; align-items: center; justify-content: center; padding: 15px;
         }
-        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+        /* TRAVA DE ALTURA PARA ALINHAMENTO PERFEITO */
+        h3 { 
+            font-size: 1.1rem; margin-bottom: 20px; 
+            min-height: 3.5rem; display: flex; align-items: center; justify-content: center;
+        }
+
         .price-box {
             background: rgba(0, 255, 127, 0.05); border-radius: 12px;
             padding: 20px; margin-bottom: 25px; border: 1px solid rgba(0, 255, 127, 0.2);
+            margin-top: auto; /* EMPURRA O PREÇO PARA BAIXO */
         }
-        .val { font-size: 2.5rem; color: var(--accent); font-weight: 800; }
+
+        .val { font-size: 2.3rem; color: var(--accent); font-weight: 800; }
+
         .btn {
             background: var(--accent); color: #0d1117; padding: 18px;
-            text-decoration: none; font-weight: 900; border-radius: 10px;
-            display: block; text-transform: uppercase;
+            text-decoration: none; font-weight: 900; border-radius: 12px;
+            display: block; text-transform: uppercase; transition: 0.3s;
         }
+
+        .btn:hover { filter: brightness(1.2); letter-spacing: 1px; }
+
         footer { 
-            margin-top: auto; padding: 60px 0 20px; color: #484f58; 
-            font-family: monospace; font-size: 0.85rem; text-align: center; 
-            border-top: 1px solid var(--border); width: 100%; 
+            margin-top: 80px; padding: 40px 0; color: #8b949e; 
+            font-size: 0.85rem; text-align: center; border-top: 1px solid var(--border); width: 100%; 
         }
     </style>
 </head>
@@ -66,28 +94,28 @@
             <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
             <h3>SSD Kingston NV3 1TB M.2 2280 NVMe</h3>
             <div class="price-box"><span class="val">R$ 943,99</span></div>
-            <a href="https://amzn.to/3ZWTuya" target="_blank" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/3ZWTuya" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
             <h3>SSD Kingston NV3 500GB M.2 2280 NVMe</h3>
             <div class="price-box"><span class="val">R$ 659,00</span></div>
-            <a href="https://amzn.to/4tXfI0S" target="_blank" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box"><img src="assets/img/ram-16gb.png" alt="Memória RAM 16GB"></div>
             <h3>RAM Kingston Fury Beast 16GB DDR4</h3>
             <div class="price-box"><span class="val">R$ 1.099,00</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box"><img src="https://m.media-amazon.com/images/I/911u6p2eS0L._AC_SL1500_.jpg" alt="SSD Kingston 480GB"></div>
             <h3>SSD Kingston A400 480GB SATA 3</h3>
             <div class="price-box"><span class="val">R$ 229,90</span></div>
-            <a href="https://amzn.to/4732WUQ" target="_blank" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4732WUQ" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
     </main>
 
@@ -95,9 +123,9 @@
         <p>// (c) 2026 Guillermo Roger Hernandez Chandia - ADS</p>
         <p>Status: All Rights Reserved (Todos os Direitos Reservados)</p>
         <br>
-        <p style="font-size: 0.75rem; color: #8b949e; max-width: 600px; margin: 0 auto; line-height: 1.4; font-family: sans-serif;">
-            <strong>AVISO DE TRANSPARÊNCIA:</strong> Este site é uma ferramenta de monitoramento técnico. 
-            <strong>NÃO</strong> realizamos vendas diretas. Ao clicar em "Ver Oferta", você será levado ao site oficial da Amazon para concluir sua compra com segurança.
+        <p style="max-width: 700px; margin: 0 auto; line-height: 1.6; font-family: sans-serif;">
+            <strong>AVISO DE TRANSPARÊNCIA:</strong> Este site é uma ferramenta de monitoramento técnico de hardware. 
+            Não realizamos vendas diretas. Ao clicar em "Ver Oferta", você será redirecionado para a Amazon Brasil.
         </p>
     </footer>
 
