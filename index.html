@@ -6,6 +6,7 @@
     <meta name="description" content="Monitoramento técnico de hardware. Tech Analytics - Guillermo Roger Hernandez Chandia.">
     <title>Tech Analytics | Monitor de Mercado</title>
     <style>
+        /* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
         :root {
             --bg: #0d1117; 
             --card: #161b22; 
@@ -22,6 +23,9 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             padding: 50px 20px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 { 
@@ -36,7 +40,7 @@
 
         .grid {
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             width: 100%; 
             max-width: 1400px;
@@ -79,8 +83,9 @@
         .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
 
         h3 { 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             margin-bottom: 20px; 
+            min-height: 3.5rem; /* TRAVA PARA ALINHAMENTO PERFEITO */
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -93,6 +98,7 @@
             padding: 20px; 
             margin-bottom: 25px; 
             border: 1px solid rgba(0, 255, 127, 0.2);
+            margin-top: auto; /* EMPURRA O PREÇO PARA A BASE */
         }
 
         .val { 
@@ -140,38 +146,37 @@
     <main class="grid">
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ssd-1tb.png" alt="SSD Kingston NV3 1TB M.2 2280 NVMe">
+                <img src="assets/img/ssd-1tb.png" alt="SSD Kingston NV3 1TB">
             </div>
-            <h3>SSD Kingston NV3 1TB M.2 2280 NVMe</h3>
+            <h3>SSD Kingston NV3 1TB M.2 NVMe</h3>
             <div class="price-box"><span class="val">R$ 943,99</span></div>
             <a href="https://amzn.to/3ZWTuya" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ssd-500gb.png" alt="SSD Kingston NV3 500GB M.2 2280 NVMe">
+                <img src="assets/img/ssd-500gb.png" alt="SSD Kingston NV3 500GB">
             </div>
-            <h3>SSD Kingston NV3 500GB M.2 2280 NVMe</h3>
+            <h3>SSD Kingston NV3 500GB M.2 NVMe</h3>
             <div class="price-box"><span class="val">R$ 659,00</span></div>
             <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ram-16gb.png" alt="RAM Kingston Fury Beast 16GB DDR4">
+                <img src="assets/img/ram-16gb.png" alt="RAM Kingston Fury Beast">
             </div>
             <h3>RAM Kingston Fury Beast 16GB DDR4</h3>
-            <div class="price-box"><span class="val">R$ 1.099,00</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <div class="price-box"><span class="val">R$ 1.043,64</span></div> <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/monitor-lg-27.png" alt="Monitor Gamer LG UltraGear 27” 27GS60F-B IPS Full HD 180Hz 1ms">
+                <img src="https://m.media-amazon.com/images/I/71R3yL2LpNL._AC_SL1500_.jpg" alt="Monitor LG UltraGear 27">
             </div>
-            <h3>Monitor Gamer LG UltraGear 27” 27GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC® AMD FreeSync™ HDR10 sRGB 99% HDMI DisplayPort</h3>
+            <h3>Monitor Gamer LG UltraGear 27" 180Hz IPS</h3>
             <div class="price-box"><span class="val">R$ 999,99</span></div>
-            <a href="https://www.amazon.com.br/dp/B09VYV1L2T" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/3V2vM6N" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
         </article>
     </main>
 
