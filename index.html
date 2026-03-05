@@ -3,207 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tech Analytics - Futuro do Hardware.">
-    <title>Tech Analytics | Hyper-Vision</title>
+    <meta name="description" content="Tech Analytics - High Performance Hardware Monitoring.">
+    <title>Tech Analytics | Elite Dashboard</title>
     <style>
         :root {
-            --bg: #05070a; 
-            --card: rgba(22, 27, 34, 0.7); 
-            --accent: #00ff7f; 
-            --accent-glow: rgba(0, 255, 127, 0.3);
-            --border: rgba(48, 54, 61, 0.8); 
-            --text: #e6edf3;
+            --bg: #080808; 
+            --card-bg: #121212; 
+            --accent: #00e5ff; /* Ciano Elétrico Moderno */
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --border: #1f1f1f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: radial-gradient(circle at top right, #0d1117, #05070a);
-            color: var(--text);
-            font-family: 'Orbitron', 'Segoe UI', sans-serif; /* Fonte mais tech se disponível */
-            padding: 50px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 60px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
         }
 
         h1 { 
-            color: var(--accent); 
+            font-size: 0.8rem;
             text-transform: uppercase; 
-            letter-spacing: 12px; 
-            margin-bottom: 60px; 
-            text-shadow: 0 0 20px var(--accent-glow);
-            font-size: clamp(1.5rem, 5vw, 3rem);
-            text-align: center;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
+            letter-spacing: 0.5em; 
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(180deg, #fff 0%, #444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .grid {
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
             width: 100%; 
             max-width: 1400px;
+            margin: 0 auto;
         }
 
         .card {
-            position: relative;
-            background: var(--card); 
-            backdrop-filter: blur(10px); /* Efeito Vidro */
+            background: var(--card-bg); 
             border: 1px solid var(--border);
-            border-radius: 15px; 
-            padding: 30px; 
-            text-align: center;
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
-
-        /* Linha de brilho no topo do card */
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transition: 0.5s;
+            border-radius: 24px; 
+            padding: 40px; 
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .card:hover { 
-            border-color: var(--accent); 
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 0 30px var(--accent-glow);
+            border-color: #333;
+            transform: translateY(-8px);
+            background: #161616;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .img-box {
             width: 100%; 
-            height: 220px; 
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px; 
-            margin-bottom: 25px;
+            height: 240px; 
+            background: #fff; /* Fundo branco limpo para os produtos */
+            border-radius: 16px; 
+            margin-bottom: 30px;
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            padding: 10px;
-            border: 1px dashed var(--border);
+            padding: 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
         }
 
         .img-box img { 
-            max-width: 95%; 
-            max-height: 95%; 
+            max-width: 100%; 
+            max-height: 100%; 
             object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .img-box img { transform: scale(1.05); }
+
+        .tag {
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         h3 { 
-            font-size: 1rem; 
-            margin-bottom: 20px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #8b949e;
+            font-size: 1.2rem; 
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            color: var(--text-main);
         }
 
-        .price-box {
-            background: rgba(0, 255, 127, 0.08); 
-            border-radius: 5px;
-            padding: 15px; 
-            margin-bottom: 20px; 
-            border-left: 4px solid var(--accent);
+        .price-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
         }
 
         .val { 
-            font-size: 2.5rem; 
-            color: var(--accent); 
-            font-weight: 800;
-            font-family: monospace; /* Estilo terminal */
+            font-size: 1.5rem; 
+            font-weight: 700;
+            color: var(--text-main);
         }
 
         .btn {
-            background: transparent; 
-            color: var(--accent); 
-            border: 1px solid var(--accent);
-            padding: 15px;
+            background: var(--text-main); 
+            color: var(--bg); 
+            padding: 12px 24px;
             text-decoration: none; 
-            font-weight: bold; 
-            border-radius: 5px;
-            display: block; 
+            font-weight: 700; 
+            font-size: 0.8rem;
+            border-radius: 100px;
             text-transform: uppercase; 
             transition: 0.3s;
-            position: relative;
         }
 
         .btn:hover { 
             background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent);
+            transform: scale(1.05);
         }
 
         footer { 
-            margin-top: 100px; 
-            padding: 40px; 
-            color: #484f58; 
+            margin-top: 120px; 
+            padding: 60px 20px; 
+            color: var(--text-dim); 
             font-size: 0.75rem; 
             text-align: center; 
             border-top: 1px solid var(--border); 
             width: 100%; 
-            letter-spacing: 2px;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px var(--accent);
         }
     </style>
 </head>
 <body>
 
-    <h1>HYPER-VISION ANALYTICS</h1>
+    <header>
+        <h1>System Status</h1>
+        <div class="hero-title">Tech Analytics</div>
+    </header>
 
     <main class="grid">
         <article class="card">
+            <div class="tag">High-End Visual</div>
             <div class="img-box">
                 <img src="assets/img/monitor-curvo.png" alt="Samsung Odyssey G9">
             </div>
-            <h3>SAMSUNG ODYSSEY G9 // ULTRA-WIDE</h3>
-            <div class="price-box"><span class="val">R$ 9.499,00</span></div>
-            <a href="https://amzn.to/4ubpvAP" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
+            <h3>Samsung Odyssey G9 49" <br>Dual QHD 240Hz</h3>
+            <div class="price-row">
+                <span class="val">R$ 9.499</span>
+                <a href="https://amzn.to/4ubpvAP" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
+            </div>
         </article>
 
         <article class="card">
+            <div class="tag">Storage Unit</div>
             <div class="img-box">
                 <img src="assets/img/ssd-1tb.png" alt="SSD 1TB">
             </div>
-            <h3>STORAGE UNIT // KINGSTON 1TB</h3>
-            <div class="price-box"><span class="val">R$ 939,00</span></div>
-            <a href="https://amzn.to/4rHqCq9" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
-        </article>
-
-        <article class="card">
-            <div class="img-box">
-                <img src="assets/img/ssd-500gb.png" alt="SSD 500GB">
+            <h3>Kingston NV3 1TB <br>PCIe 4.0 NVMe</h3>
+            <div class="price-row">
+                <span class="val">R$ 939</span>
+                <a href="https://amzn.to/4rHqCq9" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
             </div>
-            <h3>STORAGE UNIT // KINGSTON 500GB</h3>
-            <div class="price-box"><span class="val">R$ 659,00</span></div>
-            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
 
         <article class="card">
+            <div class="tag">Memory Core</div>
             <div class="img-box">
                 <img src="assets/img/ram-16gb.png" alt="RAM 16GB">
             </div>
-            <h3>MEMORY CORE // 16GB DDR4</h3>
-            <div class="price-box"><span class="val">R$ 1.149,00</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
+            <h3>Kingston Fury Beast <br>16GB DDR4 3200MHz</h3>
+            <div class="price-row">
+                <span class="val">R$ 1.149</span>
+                <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
+            </div>
         </article>
 
         <article class="card">
+            <div class="tag">Standard Visual</div>
             <div class="img-box">
                 <img src="assets/img/monitor-lg-27.png" alt="Monitor LG">
             </div>
-            <h3>VISUAL UNIT // LG ULTRAGEAR 27"</h3>
-            <div class="price-box"><span class="val">R$ 1.011,08</span></div>
-            <a href="https://amzn.to/4rdzSl2" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
+            <h3>LG UltraGear 27" <br>180Hz G-Sync</h3>
+            <div class="price-row">
+                <span class="val">R$ 1.011</span>
+                <a href="https://amzn.to/4rdzSl2" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
+            </div>
         </article>
     </main>
 
     <footer>
-        <p>SYSTEM LOADED // (c) 2026 GUILLERMO ROGER</p>
-        <p>STATUS: OPERATIONAL // TECH ANALYTICS OPS</p>
+        <p><span class="status-dot"></span> ANALYTICS ENGINE OPERATIONAL // 2026</p>
+        <p style="margin-top: 15px; opacity: 0.5;">GUILLERMO ROGER HERNANDEZ CHANDIA</p>
     </footer>
 
 </body>
