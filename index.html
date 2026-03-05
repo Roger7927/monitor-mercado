@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Monitoramento técnico de hardware. Tech Analytics - Guillermo Roger Hernandez Chandia.">
-    <title>Tech Analytics | Monitor de Mercado</title>
+    <meta name="description" content="Tech Analytics - Futuro do Hardware.">
+    <title>Tech Analytics | Hyper-Vision</title>
     <style>
         :root {
-            --bg: #0d1117; 
-            --card: #161b22; 
+            --bg: #05070a; 
+            --card: rgba(22, 27, 34, 0.7); 
             --accent: #00ff7f; 
-            --border: #30363d; 
-            --text: #f0f6fc;
+            --accent-glow: rgba(0, 255, 127, 0.3);
+            --border: rgba(48, 54, 61, 0.8); 
+            --text: #e6edf3;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg); 
+            background: radial-gradient(circle at top right, #0d1117, #05070a);
             color: var(--text);
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif; /* Fonte mais tech se disponível */
             padding: 50px 20px;
             min-height: 100vh;
             display: flex;
@@ -30,169 +31,179 @@
         h1 { 
             color: var(--accent); 
             text-transform: uppercase; 
-            letter-spacing: 8px; 
+            letter-spacing: 12px; 
             margin-bottom: 60px; 
-            text-shadow: 0 0 15px rgba(0, 255, 127, 0.4);
-            font-size: 2.5rem;
+            text-shadow: 0 0 20px var(--accent-glow);
+            font-size: clamp(1.5rem, 5vw, 3rem);
             text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
         }
 
         .grid {
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             width: 100%; 
             max-width: 1400px;
-            margin: 0 auto;
         }
 
         .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            position: relative;
             background: var(--card); 
+            backdrop-filter: blur(10px); /* Efeito Vidro */
             border: 1px solid var(--border);
-            border-radius: 20px; 
-            padding: 35px; 
+            border-radius: 15px; 
+            padding: 30px; 
             text-align: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        border-color 0.4s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        /* Linha de brilho no topo do card */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: 0.5s;
         }
 
         .card:hover { 
             border-color: var(--accent); 
-            transform: translateY(-12px);
-            box-shadow: 0 10px 30px rgba(0, 255, 127, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
 
         .img-box {
             width: 100%; 
-            height: 200px; 
-            background: #ffffff;
-            border-radius: 12px; 
+            height: 220px; 
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px; 
             margin-bottom: 25px;
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            padding: 15px;
+            padding: 10px;
+            border: 1px dashed var(--border);
         }
 
-        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .img-box img { 
+            max-width: 95%; 
+            max-height: 95%; 
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+        }
 
         h3 { 
-            font-size: 1.15rem; 
+            font-size: 1rem; 
             margin-bottom: 20px; 
-            min-height: 3.5rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #8b949e;
         }
 
         .price-box {
-            background: rgba(0, 255, 127, 0.05); 
-            border-radius: 12px;
-            padding: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid rgba(0, 255, 127, 0.2);
-            margin-top: auto;
+            background: rgba(0, 255, 127, 0.08); 
+            border-radius: 5px;
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-left: 4px solid var(--accent);
         }
 
         .val { 
-            font-size: 2.3rem; 
+            font-size: 2.5rem; 
             color: var(--accent); 
-            font-weight: 800; 
+            font-weight: 800;
+            font-family: monospace; /* Estilo terminal */
         }
 
         .btn {
-            background: var(--accent); 
-            color: #0d1117; 
-            padding: 18px;
+            background: transparent; 
+            color: var(--accent); 
+            border: 1px solid var(--accent);
+            padding: 15px;
             text-decoration: none; 
-            font-weight: 900; 
-            border-radius: 12px;
+            font-weight: bold; 
+            border-radius: 5px;
             display: block; 
             text-transform: uppercase; 
             transition: 0.3s;
+            position: relative;
         }
 
-        .btn:hover { filter: brightness(1.2); letter-spacing: 1px; }
+        .btn:hover { 
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent);
+        }
 
         footer { 
-            margin-top: 80px; 
-            padding: 40px 0; 
-            color: #8b949e; 
-            font-size: 0.85rem; 
+            margin-top: 100px; 
+            padding: 40px; 
+            color: #484f58; 
+            font-size: 0.75rem; 
             text-align: center; 
             border-top: 1px solid var(--border); 
             width: 100%; 
-        }
-
-        footer p {
-            max-width: 700px; 
-            margin: 10px auto; 
-            line-height: 1.6; 
-            font-family: sans-serif;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <h1>TECH ANALYTICS</h1>
+    <h1>HYPER-VISION ANALYTICS</h1>
 
     <main class="grid">
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/monitor-curvo.png" alt="Monitor Samsung Odyssey G9 49">
+                <img src="assets/img/monitor-curvo.png" alt="Samsung Odyssey G9">
             </div>
-            <h3>Monitor Gamer Samsung Odyssey G9 49" Curvo 240Hz</h3>
+            <h3>SAMSUNG ODYSSEY G9 // ULTRA-WIDE</h3>
             <div class="price-box"><span class="val">R$ 9.499,00</span></div>
-            <a href="https://amzn.to/4ubpvAP" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4ubpvAP" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ssd-1tb.png" alt="SSD Kingston NV3 1TB">
+                <img src="assets/img/ssd-1tb.png" alt="SSD 1TB">
             </div>
-            <h3>SSD Kingston NV3 1TB M.2 NVMe</h3>
+            <h3>STORAGE UNIT // KINGSTON 1TB</h3>
             <div class="price-box"><span class="val">R$ 939,00</span></div>
-            <a href="https://amzn.to/4rHqCq9" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4rHqCq9" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ssd-500gb.png" alt="SSD Kingston NV3 500GB">
+                <img src="assets/img/ssd-500gb.png" alt="SSD 500GB">
             </div>
-            <h3>SSD Kingston NV3 500GB M.2 NVMe</h3>
+            <h3>STORAGE UNIT // KINGSTON 500GB</h3>
             <div class="price-box"><span class="val">R$ 659,00</span></div>
-            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <a href="https://amzn.to/4tXfI0S" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/ram-16gb.png" alt="RAM Kingston Fury Beast">
+                <img src="assets/img/ram-16gb.png" alt="RAM 16GB">
             </div>
-            <h3>RAM Kingston Fury Beast 16GB DDR4</h3>
-            <div class="price-box"><span class="val">R$1.149,00</span></div>
-            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <h3>MEMORY CORE // 16GB DDR4</h3>
+            <div class="price-box"><span class="val">R$ 1.149,00</span></div>
+            <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
 
         <article class="card">
             <div class="img-box">
-                <img src="assets/img/monitor-lg-27.png" alt="Monitor LG UltraGear 27">
+                <img src="assets/img/monitor-lg-27.png" alt="Monitor LG">
             </div>
-            <h3>Monitor Gamer LG UltraGear 27" 180Hz IPS</h3>
-            <div class="price-box"><span class="val">R$1.011,08</span></div>
-            <a href="https://amzn.to/4rdzSl2" target="_blank" rel="noopener noreferrer" class="btn">Ver Oferta</a>
+            <h3>VISUAL UNIT // LG ULTRAGEAR 27"</h3>
+            <div class="price-box"><span class="val">R$ 1.011,08</span></div>
+            <a href="https://amzn.to/4rdzSl2" target="_blank" rel="noopener noreferrer" class="btn">ACESSAR PROTOCOLO</a>
         </article>
     </main>
 
     <footer>
-        <p>// (c) 2026 Guillermo Roger Hernandez Chandia - ADS</p>
-        <p>Status: All Rights Reserved (Todos os Direitos Reservados)</p>
-        <p><strong>AVISO DE TRANSPARÊNCIA:</strong> Este site é uma ferramenta de monitoramento técnico de hardware. Não realizamos vendas diretas. Ao clicar em "Ver Oferta", você será redirecionado para a Amazon Brasil.</p>
+        <p>SYSTEM LOADED // (c) 2026 GUILLERMO ROGER</p>
+        <p>STATUS: OPERATIONAL // TECH ANALYTICS OPS</p>
     </footer>
 
 </body>
