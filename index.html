@@ -9,7 +9,7 @@
         :root {
             --bg: #080808; 
             --card-bg: #121212; 
-            --accent: #00e5ff; /* Ciano Elétrico Moderno */
+            --accent: #00e5ff; /* Ciano Elétrico */
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
             --border: #1f1f1f;
@@ -23,33 +23,34 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             padding: 60px 20px;
             -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
+        header { text-align: center; margin-bottom: 80px; }
+        
         h1 { 
-            font-size: 0.8rem;
+            font-size: 0.8rem; 
             text-transform: uppercase; 
-            letter-spacing: 0.5em; 
-            color: var(--accent);
-            margin-bottom: 10px;
+            letter-spacing: 0.6em; 
+            color: var(--accent); 
+            margin-bottom: 15px; 
         }
 
-        .hero-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 800;
-            background: linear-gradient(180deg, #fff 0%, #444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
+            font-weight: 900; 
+            background: linear-gradient(180deg, #fff 0%, #444 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            letter-spacing: -2px;
         }
 
         .grid {
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             width: 100%; 
             max-width: 1400px;
             margin: 0 auto;
@@ -58,172 +59,209 @@
         .card {
             background: var(--card-bg); 
             border: 1px solid var(--border);
-            border-radius: 24px; 
-            padding: 40px; 
+            border-radius: 28px; 
+            padding: 35px; 
             display: flex;
             flex-direction: column;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .card:hover { 
-            border-color: #333;
-            transform: translateY(-8px);
-            background: #161616;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #333; 
+            transform: translateY(-10px); 
+            background: #161616; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5); 
         }
 
         .img-box {
             width: 100%; 
-            height: 240px; 
-            background: #fff; /* Fundo branco limpo para os produtos */
-            border-radius: 16px; 
+            height: 220px; 
+            background: #fff; 
+            border-radius: 20px; 
             margin-bottom: 30px;
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            padding: 20px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+            padding: 25px;
+            overflow: hidden;
         }
 
         .img-box img { 
             max-width: 100%; 
             max-height: 100%; 
-            object-fit: contain;
-            transition: transform 0.5s ease;
+            object-fit: contain; 
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); 
         }
+        
+        .card:hover .img-box img { transform: scale(1.1); }
 
-        .card:hover .img-box img { transform: scale(1.05); }
-
-        .tag {
-            color: var(--accent);
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
+        .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        
         h3 { 
             font-size: 1.2rem; 
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 25px;
-            color: var(--text-main);
+            font-weight: 600; 
+            line-height: 1.3; 
+            margin-bottom: 25px; 
+            color: var(--text-main); 
+            height: 3.5rem; 
+            display: flex; 
+            align-items: center; 
         }
 
-        .price-row {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+        .price-row { 
+            margin-top: auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding-top: 25px; 
+            border-top: 1px solid var(--border); 
         }
-
-        .val { 
-            font-size: 1.5rem; 
-            font-weight: 700;
-            color: var(--text-main);
-        }
+        
+        .val { font-size: 1.6rem; font-weight: 800; color: var(--text-main); }
 
         .btn {
             background: var(--text-main); 
             color: var(--bg); 
-            padding: 12px 24px;
+            padding: 12px 24px; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.8rem;
-            border-radius: 100px;
+            font-size: 0.8rem; 
+            border-radius: 100px; 
             text-transform: uppercase; 
-            transition: 0.3s;
+            transition: 0.4s;
         }
-
-        .btn:hover { 
-            background: var(--accent);
-            transform: scale(1.05);
-        }
+        
+        .btn:hover { background: var(--accent); transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
 
         footer { 
-            margin-top: 120px; 
-            padding: 60px 20px; 
-            color: var(--text-dim); 
-            font-size: 0.75rem; 
+            margin-top: 150px; 
+            padding: 80px 20px; 
             text-align: center; 
             border-top: 1px solid var(--border); 
             width: 100%; 
         }
 
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 8px;
-            box-shadow: 0 0 10px var(--accent);
+        .status-dot { 
+            display: inline-block; 
+            width: 10px; 
+            height: 10px; 
+            background: var(--accent); 
+            border-radius: 50%; 
+            margin-right: 10px; 
+            box-shadow: 0 0 15px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>System Status</h1>
+        <h1>System Protocol // Operational</h1>
         <div class="hero-title">Tech Analytics</div>
     </header>
 
     <main class="grid">
         <article class="card">
-            <div class="tag">High-End Visual</div>
-            <div class="img-box">
-                <img src="assets/img/monitor-curvo.png" alt="Samsung Odyssey G9">
-            </div>
-            <h3>Samsung Odyssey G9 49" <br>Dual QHD 240Hz</h3>
-            <div class="price-row">
-                <span class="val">R$ 9.499</span>
-                <a href="https://amzn.to/4ubpvAP" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
-            </div>
+            <div class="tag">Flagship Visual</div>
+            <div class="img-box"><img src="assets/img/monitor-curvo.png" alt="Odyssey G9"></div>
+            <h3>Samsung Odyssey G9 49" <br>240Hz Dual QHD OLED</h3>
+            <div class="price-row"><span class="val">R$ 9.499</span><a href="https://amzn.to/4ubpvAP" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Graphics Core</div>
+            <div class="img-box"><img src="assets/img/rtx-4090.png" alt="RTX 4090"></div>
+            <h3>NVIDIA GeForce RTX 4090 <br>24GB GDDR6X Founders</h3>
+            <div class="price-row"><span class="val">R$ 14.899</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Processing Unit</div>
+            <div class="img-box"><img src="assets/img/i9-14900k.png" alt="i9 14900K"></div>
+            <h3>Intel Core i9-14900K <br>6.0GHz Max Turbo Frequency</h3>
+            <div class="price-row"><span class="val">R$ 4.299</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">Storage Unit</div>
-            <div class="img-box">
-                <img src="assets/img/ssd-1tb.png" alt="SSD 1TB">
-            </div>
-            <h3>Kingston NV3 1TB <br>PCIe 4.0 NVMe</h3>
-            <div class="price-row">
-                <span class="val">R$ 939</span>
-                <a href="https://amzn.to/4rHqCq9" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
-            </div>
+            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
+            <h3>Kingston NV3 1TB <br>PCIe 4.0 NVMe Solid State</h3>
+            <div class="price-row"><span class="val">R$ 939</span><a href="https://amzn.to/4rHqCq9" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">Memory Core</div>
-            <div class="img-box">
-                <img src="assets/img/ram-16gb.png" alt="RAM 16GB">
-            </div>
-            <h3>Kingston Fury Beast <br>16GB DDR4 3200MHz</h3>
-            <div class="price-row">
-                <span class="val">R$ 1.149</span>
-                <a href="https://amzn.to/4rJGxo6" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
-            </div>
+            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM 16GB"></div>
+            <h3>Kingston Fury Beast <br>16GB DDR4 3200MHz Performance</h3>
+            <div class="price-row"><span class="val">R$ 1.149</span><a href="https://amzn.to/4rJGxo6" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
-            <div class="tag">Standard Visual</div>
-            <div class="img-box">
-                <img src="assets/img/monitor-lg-27.png" alt="Monitor LG">
-            </div>
-            <h3>LG UltraGear 27" <br>180Hz G-Sync</h3>
-            <div class="price-row">
-                <span class="val">R$ 1.011</span>
-                <a href="https://amzn.to/4rdzSl2" target="_blank" rel="noopener noreferrer" class="btn">Visualizar</a>
-            </div>
+            <div class="tag">System Board</div>
+            <div class="img-box"><img src="assets/img/rog-maximus.png" alt="ROG Motherboard"></div>
+            <h3>ASUS ROG Maximus Z790 <br>Extreme WiFi 7 Elite Edition</h3>
+            <div class="price-row"><span class="val">R$ 6.150</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Visual Unit</div>
+            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
+            <h3>LG UltraGear 27" <br>180Hz IPS G-Sync Ultra-Fast</h3>
+            <div class="price-row"><span class="val">R$ 1.011</span><a href="https://amzn.to/4rdzSl2" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage Unit</div>
+            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
+            <h3>Kingston NV3 500GB <br>M.2 NVMe Gen4 High-Speed</h3>
+            <div class="price-row"><span class="val">R$ 659</span><a href="https://amzn.to/4tXfI0S" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Power Delivery</div>
+            <div class="img-box"><img src="assets/img/psu-1200w.png" alt="PSU"></div>
+            <h3>ROG Thor 1200W <br>Platinum II OLED Display</h3>
+            <div class="price-row"><span class="val">R$ 2.890</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Peripheral Unit</div>
+            <div class="img-box"><img src="assets/img/mouse-pro.png" alt="Mouse"></div>
+            <h3>Logitech G Pro X <br>Superlight 2 Dex Wireless</h3>
+            <div class="price-row"><span class="val">R$ 890</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
         </article>
     </main>
 
     <footer>
-        <p><span class="status-dot"></span> ANALYTICS ENGINE OPERATIONAL // 2026</p>
-        <p style="margin-top: 15px; opacity: 0.5;">GUILLERMO ROGER HERNANDEZ CHANDIA</p>
+        <div style="margin-bottom: 30px;">
+            <span class="status-dot"></span> 
+            <span style="font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6; text-transform: uppercase;">
+                Analytics Engine Active // March 2026
+            </span>
+        </div>
+        
+        <p style="font-size: 0.75rem; color: var(--accent); letter-spacing: 6px; margin-bottom: 12px; font-weight: 800;">
+            DEVELOPED BY
+        </p>
+        
+        <p style="font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: #fff; text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);">
+            GUILLERMO ROGER HERNANDEZ CHANDIA
+        </p>
+        
+        <div style="margin-top: 40px; border-top: 1px solid #1f1f1f; display: inline-block; padding-top: 30px;">
+            <p style="opacity: 0.4; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px;">
+                © All Rights Reserved • Todos os Direitos Reservados
+            </p>
+            <p style="opacity: 0.3; font-size: 0.65rem; margin-top: 10px; letter-spacing: 2px;">
+                Analista e Desenvolvedor de Sistemas - ADS
+            </p>
+        </div>
     </footer>
 
 </body>
