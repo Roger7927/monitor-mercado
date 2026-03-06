@@ -11,7 +11,6 @@
             --card-bg: #121212; 
             --accent: #00e5ff; 
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
             --border: #1f1f1f;
         }
 
@@ -20,7 +19,7 @@
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             padding: 60px 20px;
             display: flex;
             flex-direction: column;
@@ -68,6 +67,7 @@
             transform: translateY(-10px); 
             background: #161616; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.5); 
+            border-color: #333;
         }
 
         .img-box {
@@ -95,7 +95,7 @@
             border-radius: 100px; text-transform: uppercase; transition: 0.4s;
         }
         
-        .btn:hover { background: var(--accent); transform: scale(1.05); }
+        .btn:hover { background: var(--accent); transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
 
         footer { margin-top: 150px; padding: 80px 20px; text-align: center; border-top: 1px solid var(--border); width: 100%; }
 
@@ -169,10 +169,10 @@
         </article>
 
         <article class="card">
-            <div class="tag">Power Delivery</div>
-            <div class="img-box"><img src="assets/img/psu-1200w.png" alt="PSU"></div>
-            <h3>ROG Thor 1200W <br>Platinum II OLED Display</h3>
-            <div class="price-row"><span class="val">R$ 2.890</span><a href="#" target="_blank" class="btn">Visualizar</a></div>
+            <div class="tag">System Board II</div>
+            <div class="img-box"><img src="assets/img/z890-hero.png" alt="ROG Motherboard"></div>
+            <h3>ASUS ROG Maximus Z890 <br>Hero Intel - Special Edition</h3>
+            <div class="price-row"><span class="val">R$ 4.351</span><a href="https://amzn.to/3Nmg2WC" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
