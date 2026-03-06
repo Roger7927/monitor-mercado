@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Roger Hernandez">
     <meta name="copyright" content="© 2026 Roger Hernandez - Todos os direitos reservados">
-    <title>Tech Analytics | Elite Dashboard</title>
+    <title>Tech Analytics | Cosmic Dashboard</title>
     <style>
         :root {
             --bg: #050505; 
@@ -29,7 +29,7 @@
             position: relative;
         }
 
-        /* --- SISTEMA DE ESTRELAS PISCANTES --- */
+        /* --- SISTEMA DE ESTRELAS CINTILANTES --- */
         .stars-container {
             position: fixed;
             top: 0; left: 0;
@@ -54,7 +54,7 @@
             50% { opacity: 0.8; transform: scale(1.2); }
         }
 
-        /* --- SISTEMA DE BOLHAS FLUTUANTES (MAIS COR) --- */
+        /* --- SISTEMA DE BOLHAS CIANO (MAIS VISÍVEIS) --- */
         .bubbles-container {
             position: fixed;
             top: 0; left: 0;
@@ -66,10 +66,10 @@
         .bubble {
             position: absolute;
             bottom: -150px;
-            background: rgba(0, 229, 255, 0.15); /* Aumentei a opacidade */
-            border: 1px solid rgba(0, 229, 255, 0.4); /* Borda mais visível */
+            background: rgba(0, 229, 255, 0.15);
+            border: 1px solid rgba(0, 229, 255, 0.4);
             border-radius: 50%;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); /* Efeito de brilho */
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
             animation: float-up var(--speed) infinite ease-in;
         }
 
@@ -80,17 +80,11 @@
         }
 
         header, main, footer { position: relative; z-index: 1; }
-
         header { text-align: center; margin-bottom: 80px; }
         h1 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.6em; color: var(--accent); margin-bottom: 15px; }
         .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; background: linear-gradient(180deg, #fff 0%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px; }
 
-        .grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            width: 100%; max-width: 1400px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; }
 
         .card {
             background: var(--card-bg); 
@@ -122,21 +116,21 @@
 <body>
 
     <div class="stars-container">
-        <div class="star" style="top: 10%; left: 20%; --duration: 3s;"></div>
-        <div class="star" style="top: 30%; left: 80%; --duration: 5s;"></div>
-        <div class="star" style="top: 50%; left: 40%; --duration: 4s;"></div>
-        <div class="star" style="top: 70%; left: 15%; --duration: 6s;"></div>
-        <div class="star" style="top: 85%; left: 60%; --duration: 3s;"></div>
-        <div class="star" style="top: 20%; left: 50%; --duration: 7s;"></div>
-        <div class="star" style="top: 60%; left: 90%; --duration: 4s;"></div>
+        <div class="star" style="top: 15%; left: 10%; --duration: 3s;"></div>
+        <div class="star" style="top: 45%; left: 85%; --duration: 5s;"></div>
+        <div class="star" style="top: 60%; left: 25%; --duration: 4s;"></div>
+        <div class="star" style="top: 80%; left: 70%; --duration: 6s;"></div>
+        <div class="star" style="top: 25%; left: 55%; --duration: 3s;"></div>
+        <div class="star" style="top: 5%; left: 90%; --duration: 4s;"></div>
+        <div class="star" style="top: 90%; left: 40%; --duration: 7s;"></div>
     </div>
 
     <div class="bubbles-container">
-        <div class="bubble" style="left: 5%; width: 80px; height: 80px; --speed: 18s;"></div>
-        <div class="bubble" style="left: 35%; width: 40px; height: 40px; --speed: 12s;"></div>
-        <div class="bubble" style="left: 65%; width: 100px; height: 100px; --speed: 25s;"></div>
-        <div class="bubble" style="left: 85%; width: 30px; height: 30px; --speed: 15s;"></div>
-        <div class="bubble" style="left: 50%; width: 60px; height: 60px; --speed: 20s;"></div>
+        <div class="bubble" style="left: 10%; width: 70px; height: 70px; --speed: 18s;"></div>
+        <div class="bubble" style="left: 40%; width: 35px; height: 35px; --speed: 12s;"></div>
+        <div class="bubble" style="left: 70%; width: 90px; height: 90px; --speed: 25s;"></div>
+        <div class="bubble" style="left: 85%; width: 45px; height: 45px; --speed: 15s;"></div>
+        <div class="bubble" style="left: 25%; width: 55px; height: 55px; --speed: 20s;"></div>
     </div>
 
     <header>
@@ -220,10 +214,14 @@
     </main>
 
     <footer>
+        <div style="margin-bottom: 30px;">
+            <span class="status-dot"></span> 
+            <span style="font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6; text-transform: uppercase;">Analytics Engine Active // March 2026</span>
+        </div>
         <p style="font-size: 0.75rem; color: var(--accent); letter-spacing: 6px; margin-bottom: 12px; font-weight: 800;">DEVELOPED BY</p>
-        <p style="font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: #fff;">ROGER HERNANDEZ</p>
+        <p style="font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: #fff; margin-bottom: 10px;">ROGER HERNANDEZ</p>
+        <p style="opacity: 0.5; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;">© 2026 Roger Hernandez - Todos os direitos reservados</p>
         <p style="opacity: 0.3; font-size: 0.65rem; margin-top: 15px; letter-spacing: 2px;">Analista e Desenvolvedor de Sistemas - ADS</p>
-        <p style="opacity: 0.5; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 10px;">© 2026 Roger Hernandez - Todos os direitos reservados</p>
     </footer>
 
 </body>
