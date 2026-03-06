@@ -9,7 +9,7 @@
         :root {
             --bg: #080808; 
             --card-bg: #121212; 
-            --accent: #00e5ff; /* Ciano Elétrico */
+            --accent: #00e5ff; 
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
             --border: #1f1f1f;
@@ -20,9 +20,8 @@
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             padding: 60px 20px;
-            -webkit-font-smoothing: antialiased;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -53,7 +52,6 @@
             gap: 30px;
             width: 100%; 
             max-width: 1400px;
-            margin: 0 auto;
         }
 
         .card {
@@ -63,100 +61,47 @@
             padding: 35px; 
             display: flex;
             flex-direction: column;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .card:hover { 
-            border-color: #333; 
             transform: translateY(-10px); 
             background: #161616; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.5); 
         }
 
         .img-box {
-            width: 100%; 
-            height: 220px; 
-            background: #fff; 
-            border-radius: 20px; 
+            width: 100%; height: 220px; 
+            background: #fff; border-radius: 20px; 
             margin-bottom: 30px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 25px;
-            overflow: hidden;
+            display: flex; align-items: center; justify-content: center; 
+            padding: 25px; overflow: hidden;
         }
 
-        .img-box img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); 
-        }
+        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: 0.6s; }
         
-        .card:hover .img-box img { transform: scale(1.1); }
-
         .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
         
-        h3 { 
-            font-size: 1.2rem; 
-            font-weight: 600; 
-            line-height: 1.3; 
-            margin-bottom: 25px; 
-            color: var(--text-main); 
-            height: 3.5rem; 
-            display: flex; 
-            align-items: center; 
-        }
+        h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 25px; height: 3.5rem; display: flex; align-items: center; }
 
-        .price-row { 
-            margin-top: auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding-top: 25px; 
-            border-top: 1px solid var(--border); 
-        }
+        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
         
-        .val { font-size: 1.6rem; font-weight: 800; color: var(--text-main); }
+        .val { font-size: 1.6rem; font-weight: 800; }
 
         .btn {
-            background: var(--text-main); 
-            color: var(--bg); 
-            padding: 12px 24px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.8rem; 
-            border-radius: 100px; 
-            text-transform: uppercase; 
-            transition: 0.4s;
+            background: var(--text-main); color: var(--bg); 
+            padding: 12px 24px; text-decoration: none; 
+            font-weight: 700; font-size: 0.8rem; 
+            border-radius: 100px; text-transform: uppercase; transition: 0.4s;
         }
         
-        .btn:hover { background: var(--accent); transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+        .btn:hover { background: var(--accent); transform: scale(1.05); }
 
-        footer { 
-            margin-top: 150px; 
-            padding: 80px 20px; 
-            text-align: center; 
-            border-top: 1px solid var(--border); 
-            width: 100%; 
-        }
+        footer { margin-top: 150px; padding: 80px 20px; text-align: center; border-top: 1px solid var(--border); width: 100%; }
 
-        .status-dot { 
-            display: inline-block; 
-            width: 10px; 
-            height: 10px; 
-            background: var(--accent); 
-            border-radius: 50%; 
-            margin-right: 10px; 
-            box-shadow: 0 0 15px var(--accent);
-            animation: pulse 2s infinite;
-        }
+        .status-dot { display: inline-block; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--accent); animation: pulse 2s infinite; }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -171,100 +116,42 @@
             <div class="tag">Flagship Visual</div>
             <div class="img-box"><img src="assets/img/monitor-curvo.png" alt="Odyssey G9"></div>
             <h3>Samsung Odyssey G9 49" <br>240Hz Dual QHD OLED</h3>
-            <div class="price-row">
-                <span class="val">R$ 9.499</span>
-                <a href="https://amzn.to/4ubpvAP" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="price-row"><span class="val">R$ 9.499</span><a href="https://amzn.to/4ubpvAP" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">Graphics Core</div>
             <div class="img-box"><img src="assets/img/rtx-5060ti.png" alt="Palit RTX 5060 Ti"></div>
             <h3>Palit GeForce RTX 5060 Ti <br>Infinity 3 - 16GB GDDR7</h3>
-            <div class="price-row">
-                <span class="val">R$ 4.352</span>
-                <a href="https://amzn.to/3ONjRVn" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="price-row"><span class="val">R$ 4.352</span><a href="https://amzn.to/3ONjRVn" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">Processing Unit</div>
             <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
             <h3>Intel Core i9-14900KS <br>6.2GHz Special Edition</h3>
-            <div class="price-row">
-                <span class="val">R$ 6.953</span>
-                <a href="https://amzn.to/4rNgFaI" target="_blank" class="btn">Visualizar</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Storage Unit</div>
-            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
-            <h3>Kingston NV3 1TB <br>PCIe 4.0 NVMe Solid State</h3>
-            <div class="price-row">
-                <span class="val">R$ 939</span>
-                <a href="https://amzn.to/4rHqCq9" target="_blank" class="btn">Visualizar</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Handheld PC</div>
-            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ASUS ROG Ally"></div>
-            <h3>ASUS ROG Ally - 7" FHD <br>Ryzen Z1 Extreme - 512GB SSD</h3>
-            <div class="price-row">
-                <span class="val">OFERTA</span>
-                <a href="https://amzn.to/4aRZBdJ" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="price-row"><span class="val">R$ 6.953</span><a href="https://amzn.to/4rNgFaI" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">System Board</div>
             <div class="img-box"><img src="assets/img/z890-hero.png" alt="ROG Motherboard"></div>
             <h3>ASUS ROG Maximus Z890 <br>Hero Intel - DDR5 PCIe 5.0</h3>
-            <div class="price-row">
-                <span class="val">R$ 4.351</span>
-                <a href="https://amzn.to/3Nmg2WC" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="price-row"><span class="val">R$ 4.351</span><a href="https://amzn.to/3Nmg2WC" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
-            <div class="tag">Visual Unit</div>
-            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
-            <h3>LG UltraGear 27" <br>180Hz IPS G-Sync Ultra-Fast</h3>
-            <div class="price-row">
-                <span class="val">R$ 1.011</span>
-                <a href="https://amzn.to/4rdzSl2" target="_blank" class="btn">Visualizar</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Storage Unit</div>
-            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
-            <h3>Kingston NV3 500GB <br>M.2 NVMe Gen4 High-Speed</h3>
-            <div class="price-row">
-                <span class="val">R$ 659</span>
-                <a href="https://amzn.to/4tXfI0S" target="_blank" class="btn">Visualizar</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Power Delivery</div>
-            <div class="img-box"><img src="assets/img/psu-1200w.png" alt="PSU"></div>
-            <h3>ROG Thor 1200W <br>Platinum II OLED Display</h3>
-            <div class="price-row">
-                <span class="val">R$ 2.890</span>
-                <a href="#" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="tag">Handheld PC</div>
+            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ASUS ROG Ally"></div>
+            <h3>ASUS ROG Ally - 7" FHD <br>Ryzen Z1 Extreme - 512GB SSD</h3>
+            <div class="price-row"><span class="val">OFERTA</span><a href="https://amzn.to/4aRZBdJ" target="_blank" class="btn">Visualizar</a></div>
         </article>
 
         <article class="card">
             <div class="tag">Peripheral Unit</div>
             <div class="img-box"><img src="assets/img/gpro-dex.png" alt="Mouse"></div>
             <h3>Logitech G Pro X Superlight 2 <br>DEX Wireless - High Performance</h3>
-            <div class="price-row">
-                <span class="val">R$ 999</span>
-                <a href="https://amzn.to/4s4pKMk" target="_blank" class="btn">Visualizar</a>
-            </div>
+            <div class="price-row"><span class="val">R$ 999</span><a href="https://amzn.to/4s4pKMk" target="_blank" class="btn">Visualizar</a></div>
         </article>
     </main>
 
@@ -281,7 +168,7 @@
         </p>
         
         <p style="font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: #fff; text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);">
-            GUILLERMO ROGER HERNANDEZ CHANDIA
+            ROGER HERNANDEZ
         </p>
         
         <div style="margin-top: 40px; border-top: 1px solid #1f1f1f; display: inline-block; padding-top: 30px;">
