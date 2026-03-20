@@ -3,55 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Guillermo Roger Hernandez Chandia">
+    <meta name="copyright" content="© 2026 Roger Hernandez - ADS">
     <title>Tech Analytics | Cosmic Dashboard</title>
     <style>
-        :root { --bg: #050505; --card-bg: #111111; --accent: #00e5ff; --text-main: #ffffff; --border: #1f1f1f; }
+        :root {
+            --bg: #050505; --card-bg: #111111; --accent: #00e5ff; 
+            --text-main: #ffffff; --border: #1f1f1f; --highlight: #ff00ff;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 28px; padding: 35px; display: flex; flex-direction: column; transition: 0.5s; }
+        body {
+            background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif;
+            padding: 60px 20px; display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; position: relative;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; z-index: 1; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 28px; padding: 35px; display: flex; flex-direction: column; transition: 0.5s; backdrop-filter: blur(10px); }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0, 229, 255, 0.15); }
         .img-box { width: 100%; height: 220px; background: #fff; border-radius: 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; padding: 25px; }
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        h3 { font-size: 1.1rem; margin-bottom: 15px; height: 3rem; display: flex; align-items: center; }
-        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); }
-        .val { font-size: 1.3rem; font-weight: 800; }
-        .btn { background: var(--text-main); color: var(--bg); padding: 10px 18px; text-decoration: none; font-weight: 700; border-radius: 100px; }
+        .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        h3 { font-size: 1.2rem; font-weight: 600; height: 3.5rem; display: flex; align-items: center; margin-bottom: 15px; }
+        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
+        .val { font-size: 1.4rem; font-weight: 800; }
+        .btn { background: var(--text-main); color: var(--bg); padding: 12px 20px; text-decoration: none; font-weight: 700; border-radius: 100px; text-transform: uppercase; transition: 0.4s; }
+        .btn:hover { background: var(--accent); transform: scale(1.05); }
     </style>
 </head>
 <body>
-    <h1 style="margin-bottom: 50px; font-size: 3rem;">Tech Analytics</h1>
+    <header style="text-align: center; margin-bottom: 80px;">
+        <h1 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.6em; color: var(--accent); margin-bottom: 15px;">System Protocol // Operational</h1>
+        <div style="font-size: 4rem; font-weight: 900; background: linear-gradient(180deg, #fff 0%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Tech Analytics</div>
+    </header>
+
     <main class="grid">
         <article class="card">
-            <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png"></div>
+            <div class="tag">OLED Ultimate</div>
+            <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png" alt="Odyssey G9"></div>
             <h3>Samsung Odyssey OLED G9 49"</h3>
             <div class="price-row"><span class="val">R$ 10.998,90</span><a href="https://www.amazon.com.br/dp/B0C79K5Y8B?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
+
         <article class="card">
-            <div class="img-box"><img src="assets/img/acer-nitro-v15.PNG"></div>
+            <div class="tag">Graphics Core</div>
+            <div class="img-box"><img src="assets/img/zotac-rtx-5060ti.png" alt="RTX 5060 Ti"></div>
+            <h3>Zotac Gaming RTX 5060 Ti</h3>
+            <div class="price-row"><span class="val">R$ 4.098,00</span><a href="https://www.amazon.com.br/dp/B0C6BC9ZDR?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">CPU</div>
+            <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
+            <h3>Intel Core i9-14900KS</h3>
+            <div class="price-row"><span class="val">R$ 6.951,90</span><a href="https://www.amazon.com.br/dp/B0CW19R9P8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage Unit</div>
+            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
+            <h3>Kingston NV3 1TB PCIe 4.0</h3>
+            <div class="price-row"><span class="val">R$ 910,00</span><a href="https://www.amazon.com.br/dp/B0D9S7V9D4?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Handheld</div>
+            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ROG Ally"></div>
+            <h3>ASUS ROG Ally Z1 Extreme</h3>
+            <div class="price-row"><span class="val">OFERTA</span><a href="https://www.amazon.com.br/dp/B0C8V2Y3B2?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Mainboard</div>
+            <div class="img-box"><img src="assets/img/z890-hero.png" alt="Z890 Hero"></div>
+            <h3>ASUS ROG Maximus Z890 Hero</h3>
+            <div class="price-row"><span class="val">R$ 4.182,37</span><a href="https://www.amazon.com.br/dp/B0DJ2G5C5P?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Visual Unit</div>
+            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
+            <h3>LG UltraGear 27" 180Hz IPS</h3>
+            <div class="price-row"><span class="val">R$ 1.054,56</span><a href="https://www.amazon.com.br/dp/B0CQTN2T6J?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Mouse</div>
+            <div class="img-box"><img src="assets/img/gpro-dex.png" alt="G Pro"></div>
+            <h3>Logitech G Pro X Superlight 2</h3>
+            <div class="price-row"><span class="val">R$ 849,99</span><a href="https://www.amazon.com.br/dp/B0C9R9K2S8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">RAM Unit</div>
+            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM"></div>
+            <h3>Kingston FURY Beast 16GB</h3>
+            <div class="price-row"><span class="val">R$ 1.149,00</span><a href="https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage</div>
+            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
+            <h3>Kingston NV3 500GB Gen4</h3>
+            <div class="price-row"><span class="val">R$ 669,00</span><a href="https://www.amazon.com.br/dp/B0D9S69Y9Y?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Laptop Unit</div>
+            <div class="img-box"><img src="assets/img/acer-nitro-v15.PNG" alt="Acer Nitro"></div>
             <h3>Acer Nitro V15 RTX 3050</h3>
             <div class="price-row"><span class="val">R$ 5.034,05</span><a href="https://www.amazon.com.br/dp/B0FYJ67V77?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
         <article class="card">
-            <div class="img-box"><img src="assets/img/hyperx-cloud-2.PNG"></div>
+            <div class="tag">Audio Unit</div>
+            <div class="img-box"><img src="assets/img/hyperx-cloud-2.PNG" alt="HyperX"></div>
             <h3>HyperX Cloud II 7.1</h3>
             <div class="price-row"><span class="val">R$ 530,34</span><a href="https://www.amazon.com.br/dp/B00SAYCXWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
         <article class="card">
-            <div class="img-box"><img src="assets/img/elements-lunari.PNG"></div>
-            <h3>Cadeira Elements Lunari</h3>
+            <div class="tag">Support Unit</div>
+            <div class="img-box"><img src="assets/img/elements-lunari.PNG" alt="Elements"></div>
+            <h3>Cadeira Gamer Elements Lunari</h3>
             <div class="price-row"><span class="val">R$ 1.564,62</span><a href="https://www.amazon.com.br/dp/B0DB2H6C4W?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
         <article class="card">
-            <div class="img-box"><img src="assets/img/controle-xbox.PNG"></div>
+            <div class="tag">Input Unit</div>
+            <div class="img-box"><img src="assets/img/controle-xbox.PNG" alt="Controle Xbox"></div>
             <h3>Controle Xbox Velocity Green</h3>
             <div class="price-row"><span class="val">R$ 388,25</span><a href="https://www.amazon.com.br/dp/B0BXQ5RMNV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
     </main>
-    <footer style="margin-top: 80px; text-align: center; opacity: 0.5;">
-        <p>© 2026 Guillermo Roger Hernandez Chandia - ADS</p>
+
+    <footer style="margin-top: 100px; text-align: center; padding: 40px; border-top: 1px solid var(--border);">
+        <p style="font-size: 1.8rem; font-weight: 900;">ROGER HERNANDEZ</p>
+        <p style="opacity: 0.3; font-size: 0.65rem;">© 2026 Guillermo Roger Hernandez Chandia - ADS</p>
     </footer>
 </body>
 </html>
