@@ -30,6 +30,7 @@
             position: relative;
         }
 
+        /* Background Estelar */
         .stars-container {
             position: fixed;
             top: 0; left: 0;
@@ -55,6 +56,7 @@
             30%, 70% { opacity: var(--max-opacity, 0.8); transform: scale(1); }
         }
 
+        /* Animação de Bolhas Fluindo */
         .bubbles-container {
             position: fixed;
             top: 0; left: 0;
@@ -75,17 +77,20 @@
         @keyframes float-up {
             0% { transform: translateY(0) scale(1); opacity: 0; }
             20% { opacity: 0.6; }
-            100% { transform: translateY(-1600px) scale(1.5); opacity: 0; }
+            100% { transform: translateY(-1800px) scale(1.5); opacity: 0; }
         }
 
         header, main, footer, .intro-section { position: relative; z-index: 1; }
+        
         header { text-align: center; margin-bottom: 20px; }
         h1 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.6em; color: var(--accent); margin-bottom: 15px; }
         .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; background: linear-gradient(180deg, #fff 0%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px; }
 
-        .intro-section { text-align: center; max-width: 700px; margin-bottom: 80px; opacity: 0.8; line-height: 1.6; }
+        .intro-section { text-align: center; max-width: 750px; margin-bottom: 80px; opacity: 0.9; line-height: 1.6; }
         .intro-section p { font-size: 1.1rem; color: #ccc; }
+        .intro-section strong { color: var(--accent); }
 
+        /* Grid de Cards */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; }
 
         .card {
@@ -103,7 +108,7 @@
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
         .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-        .badge { display: inline-block; background: var(--highlight); color: #fff; font-size: 0.6rem; padding: 4px 10px; border-radius: 4px; font-weight: 900; margin-left: 10px; vertical-align: middle; }
+        .badge { display: inline-block; background: var(--highlight); color: #fff; font-size: 0.6rem; padding: 4px 10px; border-radius: 4px; font-weight: 900; margin-left: 10px; vertical-align: middle; box-shadow: 0 0 10px var(--highlight); }
         
         h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 15px; height: 3.5rem; display: flex; align-items: center; }
         
@@ -112,14 +117,16 @@
 
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
         .val { font-size: 1.4rem; font-weight: 800; }
+        
         .btn { background: var(--text-main); color: var(--bg); padding: 12px 20px; text-decoration: none; font-weight: 700; font-size: 0.75rem; border-radius: 100px; text-transform: uppercase; transition: 0.4s; text-align: center; border: 2px solid transparent; }
         .btn:hover { background: transparent; color: var(--text-main); border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
+        /* Rodapé e Conformidade */
         footer { margin-top: 150px; padding: 80px 20px; text-align: center; border-top: 1px solid var(--border); width: 100%; }
         .status-dot { display: inline-block; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 15px var(--accent); animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        .compliance-text { opacity: 0.4; font-size: 0.65rem; max-width: 600px; margin: 30px auto; line-height: 1.6; letter-spacing: 1px; }
+        .compliance-text { opacity: 0.5; font-size: 0.7rem; max-width: 600px; margin: 30px auto; line-height: 1.6; letter-spacing: 1px; color: var(--accent); font-weight: bold; }
     </style>
 </head>
 <body>
@@ -129,17 +136,18 @@
         <div class="star" style="top: 25%; left: 25%; --duration: 4.3s; --size: 3px; --max-opacity: 1.0; --color: #bfefff;"></div>
         <div class="star" style="top: 55%; left: 90%; --duration: 4.6s; --size: 2px; --max-opacity: 0.9;"></div>
         <div class="star" style="top: 85%; left: 60%; --duration: 5.9s; --size: 2px; --max-opacity: 0.8;"></div>
-        <div class="star" style="top: 30%; left: 5%; --duration: 3.3s; --size: 3px; --max-opacity: 1.0; --color: #bfefff;"></div>
-        <div class="star" style="top: 10%; left: 50%; --duration: 4.1s; --size: 2px; --max-opacity: 0.9; --color: #bffff9;"></div>
-        <div class="star" style="top: 80%; left: 85%; --duration: 5.8s; --size: 3px; --max-opacity: 1.0; --color: #bffff9;"></div>
-        <div class="star" style="top: 48%; left: 15%; --duration: 3.4s; --size: 2px; --max-opacity: 0.8;"></div>
+        <div class="star" style="top: 10%; left: 50%; --duration: 4.1s; --size: 2px; --max-opacity: 0.9;"></div>
+        <div class="star" style="top: 80%; left: 85%; --duration: 5.8s; --size: 3px; --max-opacity: 1.0;"></div>
     </div>
 
     <div class="bubbles-container">
-        <div class="bubble" style="left: 10%; width: 70px; height: 70px; --speed: 18s;"></div>
-        <div class="bubble" style="left: 40%; width: 35px; height: 35px; --speed: 12s;"></div>
+        <div class="bubble" style="left: 5%; width: 40px; height: 40px; --speed: 15s;"></div>
+        <div class="bubble" style="left: 15%; width: 20px; height: 20px; --speed: 10s;"></div>
+        <div class="bubble" style="left: 30%; width: 80px; height: 80px; --speed: 22s;"></div>
+        <div class="bubble" style="left: 55%; width: 45px; height: 45px; --speed: 14s;"></div>
         <div class="bubble" style="left: 70%; width: 90px; height: 90px; --speed: 25s;"></div>
         <div class="bubble" style="left: 85%; width: 50px; height: 50px; --speed: 20s;"></div>
+        <div class="bubble" style="left: 95%; width: 25px; height: 25px; --speed: 11s;"></div>
     </div>
 
     <header>
@@ -148,7 +156,7 @@
     </header>
 
     <section class="intro-section">
-        <p>A curadoria definitiva de hardware. Analisamos os melhores componentes em performance e <strong>custo-benefício</strong> para elevar seu setup ao nível profissional em 2026.</p>
+        <p>A curadoria definitiva de hardware de alta performance. Selecionamos apenas os melhores componentes em <strong>custo-benefício</strong> e tecnologia para elevar seu setup ao nível profissional em 2026.</p>
     </section>
 
     <main class="grid">
@@ -156,7 +164,7 @@
             <div class="tag">OLED Ultimate <span class="badge">TOP 1</span></div>
             <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png" alt="Odyssey OLED G9"></div>
             <h3>Samsung Odyssey OLED G9 49"</h3>
-            <p class="description">Imersão total com <strong>240Hz</strong> e tempo de resposta de 0.03ms. Ideal para simuladores e produtividade extrema.</p>
+            <p class="description">Imersão total com <strong>240Hz</strong> e 0.03ms. O monitor definitivo para simuladores e produtividade extrema.</p>
             <div class="price-row">
                 <span class="val">R$ 10.998,90</span>
                 <a href="https://amzn.to/47aFs0c?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
@@ -166,8 +174,8 @@
         <article class="card">
             <div class="tag">Graphics Core <span class="badge">NEW GEN</span></div>
             <div class="img-box"><img src="assets/img/zotac-rtx-5060ti.png" alt="Zotac RTX 5060 Ti"></div>
-            <h3>Zotac Gaming GeForce RTX 5060 Ti</h3>
-            <p class="description">Performance de ponta com <strong>16GB GDDR7</strong>. Rode qualquer jogo atual no ultra com Ray Tracing nativo.</p>
+            <h3>Zotac Gaming RTX 5060 Ti 16GB</h3>
+            <p class="description">Performance de elite com <strong>Ray Tracing nativo</strong>. A placa ideal para os jogos mais pesados de 2026.</p>
             <div class="price-row">
                 <span class="val">R$ 4.098,00</span>
                 <a href="https://amzn.to/3NtxwAE?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
@@ -175,10 +183,10 @@
         </article>
 
         <article class="card">
-            <div class="tag">Processing Unit</div>
+            <div class="tag">Processing Unit <span class="badge">EXTREME</span></div>
             <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
-            <h3>Intel Core i9-14900KS Special Ed.</h3>
-            <p class="description">O processador mais rápido do mundo com <strong>6.2GHz</strong>. Poder bruto para renderização e multitarefa pesada.</p>
+            <h3>Intel Core i9-14900KS 6.2GHz</h3>
+            <p class="description">O processador mais rápido do mundo. Poder bruto para <strong>multitarefa pesada</strong> e FPS estável.</p>
             <div class="price-row">
                 <span class="val">R$ 6.951,90</span>
                 <a href="https://amzn.to/4rNgFaI?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
@@ -189,7 +197,7 @@
             <div class="tag">Storage Unit <span class="badge">FAST</span></div>
             <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
             <h3>Kingston NV3 1TB PCIe 4.0</h3>
-            <p class="description">Velocidade de leitura insana. Reduza o tempo de load dos seus jogos para quase zero com <strong>tecnologia NVMe</strong>.</p>
+            <p class="description">Diga adeus às telas de loading. Tecnologia <strong>NVMe Gen4</strong> para um carregamento instantâneo.</p>
             <div class="price-row">
                 <span class="val">R$ 910,00</span>
                 <a href="https://amzn.to/4rHqCq9?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
@@ -197,10 +205,32 @@
         </article>
 
         <article class="card">
+            <div class="tag">Handheld PC <span class="badge">PORTABLE</span></div>
+            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ASUS ROG Ally"></div>
+            <h3>ASUS ROG Ally Z1 Extreme</h3>
+            <p class="description">Todo o poder do PC na palma da mão. Rode sua <strong>biblioteca Steam</strong> com performance incrível.</p>
+            <div class="price-row">
+                <span class="val">OFERTA</span>
+                <a href="https://amzn.to/4aRZBdJ?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">System Board <span class="badge">PRO CHOICE</span></div>
+            <div class="img-box"><img src="assets/img/z890-hero.png" alt="ROG Motherboard"></div>
+            <h3>ASUS ROG Maximus Z890 Hero</h3>
+            <p class="description">A base para overclock extremo. Estabilidade e <strong>tecnologia PCIe 5.0</strong> de última geração.</p>
+            <div class="price-row">
+                <span class="val">R$ 4.182,37</span>
+                <a href="https://amzn.to/3Nmg2WC?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
             <div class="tag">Visual Unit <span class="badge">BEST BUY</span></div>
             <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
             <h3>LG UltraGear 27" 180Hz IPS</h3>
-            <p class="description">O melhor <strong>custo-benefício</strong> para e-Sports. Painel IPS com cores vibrantes e fluidez total em 180Hz.</p>
+            <p class="description">O melhor custo-benefício para <strong>jogos competitivos</strong>. Painel IPS com cores vibrantes.</p>
             <div class="price-row">
                 <span class="val">R$ 1.054,56</span>
                 <a href="https://amzn.to/4rdzSl2?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
@@ -208,13 +238,79 @@
         </article>
 
         <article class="card">
-            <div class="tag">Peripheral Unit</div>
+            <div class="tag">Peripheral Unit <span class="badge">PRO CHOICE</span></div>
             <div class="img-box"><img src="assets/img/gpro-dex.png" alt="Mouse"></div>
             <h3>Logitech G Pro X Superlight 2</h3>
-            <p class="description">Usado pelos pro-players. Tecnologia <strong>Lightspeed Wireless</strong> para precisão absoluta e peso ultraleve.</p>
+            <p class="description">Usado pelos campeões. Tecnologia <strong>Wireless Lightspeed</strong> para precisão absoluta.</p>
             <div class="price-row">
                 <span class="val">R$ 849,99</span>
                 <a href="https://amzn.to/4s4pKMk?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Portable Power <span class="badge">TOP VALUE</span></div>
+            <div class="img-box"><img src="assets/img/acer-nitro-v15.png" alt="Acer Nitro V15"></div>
+            <h3>Acer Nitro V15 RTX 3050</h3>
+            <p class="description">A máquina gamer móvel perfeita. Tela de <strong>144Hz</strong> para jogar com fluidez em qualquer lugar.</p>
+            <div class="price-row">
+                <span class="val">R$ 4.299,00</span>
+                <a href="https://amzn.to/3BInW2Z?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Audio Unit <span class="badge">7.1 SOUND</span></div>
+            <div class="img-box"><img src="assets/img/hyperx-cloud-2.png" alt="HyperX Cloud II"></div>
+            <h3>HyperX Cloud II Pro Gamer</h3>
+            <p class="description">Ouça cada passo do inimigo. Conforto <strong>Memory Foam</strong> para longas sessões de jogo.</p>
+            <div class="price-row">
+                <span class="val">R$ 499,90</span>
+                <a href="https://amzn.to/4gH6H9k?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Support Unit <span class="badge">ERGONOMIC</span></div>
+            <div class="img-box"><img src="assets/img/corsair-t3-rush.png" alt="Corsair T3 Rush"></div>
+            <h3>Cadeira Gamer Corsair T3 Rush</h3>
+            <p class="description">Upgrade na sua ergonomia. Tecido <strong>respirável</strong> que garante conforto térmico total.</p>
+            <div class="price-row">
+                <span class="val">R$ 1.890,00</span>
+                <a href="https://amzn.to/3Nst6nQ?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Input Unit</div>
+            <div class="img-box"><img src="assets/img/controle-xbox.png" alt="Controle Xbox"></div>
+            <h3>Controle Wireless Xbox Series</h3>
+            <p class="description">A melhor ergonomia do mercado. Conecte no PC ou Console com <strong>latência zero</strong>.</p>
+            <div class="price-row">
+                <span class="val">R$ 429,00</span>
+                <a href="https://amzn.to/4eG6Z3v?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Memory Unit <span class="badge">DUAL CHANNEL</span></div>
+            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="Kingston FURY"></div>
+            <h3>Kingston FURY Beast DDR4</h3>
+            <p class="description">Acelere seu sistema. Estabilidade absoluta para rodar jogos e <strong>aplicações de ADS</strong>.</p>
+            <div class="price-row">
+                <span class="val">R$ 1.149,00</span>
+                <a href="https://amzn.to/4rJGxo6?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage Unit <span class="badge">ECO FAST</span></div>
+            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
+            <h3>Kingston NV3 500GB Gen4</h3>
+            <p class="description">Ideal para boot do sistema. Performance <strong>NVMe Gen4</strong> compacta e extremamente confiável.</p>
+            <div class="price-row">
+                <span class="val">R$ 669,00</span>
+                <a href="https://amzn.to/4tXfI0S?tag=guillermote08-20" target="_blank" class="btn">Ver na Amazon</a>
             </div>
         </article>
     </main>
@@ -231,9 +327,4 @@
 
         <p style="font-size: 0.75rem; color: var(--accent); letter-spacing: 6px; margin-bottom: 12px; font-weight: 800;">DEVELOPED BY</p>
         <p style="font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: #fff; margin-bottom: 10px;">ROGER HERNANDEZ</p>
-        <p style="opacity: 0.5; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;">© 2026 Roger Hernandez - Todos os direitos reservados</p>
-        <p style="opacity: 0.3; font-size: 0.65rem; margin-top: 15px; letter-spacing: 2px;">Analista e Desenvolvedor de Sistemas - ADS</p>
-    </footer>
-
-</body>
-</html>
+        <p style="opacity: 0.5; font-size: 0.7rem; text-transform:
