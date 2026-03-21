@@ -27,7 +27,7 @@
             background-color: var(--bg);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            padding: 60px 20px;
+            padding: 80px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* 🏛️ NOSSA MARCA: ESTRELAS BRILHANTES (FONDO) */
+        /* 🏛️ NOSSA MARCA: ESTRELAS BRILHANTES */
         #stars {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
@@ -44,7 +44,7 @@
                 radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 2px);
             background-size: 550px 550px, 350px 350px;
             background-position: 0 0, 40px 60px;
-            animation: starsBlink 15s linear infinite;
+            animation: starsBlink 20s linear infinite;
         }
 
         @keyframes starsBlink {
@@ -52,87 +52,94 @@
             to { background-position: -550px 0, 390px 60px; }
         }
 
-        /* 🏛️ NOSSA MARCA: BUMBLES (CONTAINER) */
+        /* 🏛️ NOSSA MARCA: BUMBLES SUBINDO */
         #particles-js {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 2;
         }
 
-        header { text-align: center; margin-bottom: 120px; z-index: 10; position: relative; }
+        header { text-align: center; margin-bottom: 140px; z-index: 10; position: relative; }
         header h1 {
-            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.6em;
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.7em;
             color: var(--accent); margin-bottom: 15px; text-shadow: 0 0 15px var(--accent);
         }
 
         header .logo {
-            font-size: 4rem; font-weight: 900;
+            font-size: 4.5rem; font-weight: 900;
             background: linear-gradient(180deg, #fff 0%, #444 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             position: relative;
         }
 
         header .logo::after {
-            content: 'COSMIC'; position: absolute; bottom: -45px; left: 50%;
-            transform: translateX(-50%); font-size: 1.2rem; letter-spacing: 0.8em;
-            color: var(--highlight); text-shadow: 0 0 15px var(--highlight); font-weight: 800;
+            content: 'COSMIC'; position: absolute; bottom: -55px; left: 50%;
+            transform: translateX(-50%); font-size: 1.4rem; letter-spacing: 0.9em;
+            color: var(--highlight); text-shadow: 0 0 20px var(--highlight); font-weight: 800;
         }
 
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px; width: 100%; max-width: 1400px; z-index: 10;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px; width: 100%; max-width: 1500px; z-index: 10;
         }
 
         .card {
-            background: rgba(17, 17, 17, 0.85); border: 1px solid var(--border);
-            border-radius: 28px; padding: 35px; display: flex; flex-direction: column;
-            transition: 0.5s; backdrop-filter: blur(12px);
+            background: rgba(17, 17, 17, 0.82); border: 1px solid var(--border);
+            border-radius: 32px; padding: 45px 35px; display: flex; flex-direction: column;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            backdrop-filter: blur(15px);
+            min-height: 620px; /* AUMENTADO PARA MANTER A ESTÉTICA */
         }
 
         .card:hover {
-            transform: translateY(-10px); border-color: var(--accent);
-            box-shadow: 0 30px 60px rgba(0, 229, 255, 0.2);
+            transform: translateY(-15px); border-color: var(--accent);
+            box-shadow: 0 40px 80px rgba(0, 229, 255, 0.25);
         }
 
         .img-box {
-            width: 100%; height: 220px; background: #fff; border-radius: 20px;
-            margin-bottom: 30px; display: flex; align-items: center; justify-content: center;
-            padding: 25px; border: 1px solid var(--border);
+            width: 100%; height: 240px; background: #fff; border-radius: 24px;
+            margin-bottom: 35px; display: flex; align-items: center; justify-content: center;
+            padding: 30px; border: 1px solid var(--border);
         }
 
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .tag { color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; }
 
-        h3 { font-size: 1.2rem; font-weight: 600; height: 3.5rem; display: flex; align-items: center; margin-bottom: 15px; }
+        h3 { font-size: 1.3rem; font-weight: 700; min-height: 4rem; display: flex; align-items: center; margin-bottom: 10px; }
+
+        .desc {
+            color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;
+            margin-bottom: 30px; min-height: 4.8rem;
+        }
 
         .price-row {
             margin-top: auto; display: flex; justify-content: space-between;
-            align-items: center; padding-top: 25px; border-top: 1px solid var(--border);
+            align-items: center; padding-top: 30px; border-top: 1px solid var(--border);
         }
 
-        .val { font-size: 1.4rem; font-weight: 800; }
+        .val { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
 
         .btn {
-            background: var(--text-main); color: var(--bg); padding: 12px 20px;
-            text-decoration: none; font-weight: 700; border-radius: 100px;
-            text-transform: uppercase; transition: 0.4s;
+            background: var(--text-main); color: var(--bg); padding: 14px 24px;
+            text-decoration: none; font-weight: 800; border-radius: 100px;
+            text-transform: uppercase; transition: 0.4s; font-size: 0.8rem;
         }
 
-        .btn:hover { background: var(--accent); transform: scale(1.05); }
+        .btn:hover { background: var(--accent); transform: scale(1.08); box-shadow: 0 0 20px var(--accent); }
 
         footer {
-            margin-top: 100px; text-align: center; padding: 60px 40px; width: 100%;
+            margin-top: 120px; text-align: center; padding: 80px 40px; width: 100%;
             border-top: 1px solid var(--border); z-index: 10;
         }
 
         footer .amazon-clause {
-            color: var(--accent); font-size: 0.75rem; margin-bottom: 40px;
-            opacity: 0.9; letter-spacing: 1px; max-width: 700px; margin: 0 auto 40px auto;
+            color: var(--accent); font-size: 0.75rem; margin-bottom: 50px;
+            opacity: 0.8; letter-spacing: 1.5px; max-width: 800px; margin: 0 auto 50px auto;
         }
 
-        footer .name { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
-        footer .role { color: var(--accent); font-weight: 600; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
-        footer .copy { color: var(--text-muted); font-size: 0.7rem; letter-spacing: 1px; margin-top: 10px; text-transform: uppercase; }
+        footer .name { font-size: 2.5rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 15px; }
+        footer .role { color: var(--accent); font-weight: 700; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; }
+        footer .copy { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 2px; margin-top: 12px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -149,6 +156,7 @@
             <div class="tag">Laptop Unit</div>
             <div class="img-box"><img src="assets/img/acer-nitro-v15.png" alt="Acer Nitro"></div>
             <h3>Acer Nitro V15 RTX 3050</h3>
+            <p class="desc">A potência que o curso de ADS exige. Equipado com RTX para acelerar seus projetos de desenvolvimento e rodar os games mais pesados.</p>
             <div class="price-row"><span class="val">R$ 5.034,05</span><a href="https://www.amazon.com.br/dp/B0FYJ67V77?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
@@ -156,6 +164,7 @@
             <div class="tag">Audio Unit</div>
             <div class="img-box"><img src="assets/img/hyperx-cloud-2.png" alt="HyperX"></div>
             <h3>HyperX Cloud II 7.1</h3>
+            <p class="desc">Imersão absoluta. O sistema 7.1 garante que você ouça cada linha de comando e cada passo do inimigo com fidelidade extrema.</p>
             <div class="price-row"><span class="val">R$ 530,34</span><a href="https://www.amazon.com.br/dp/B00SAYCXWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
@@ -163,6 +172,7 @@
             <div class="tag">Support Unit</div>
             <div class="img-box"><img src="assets/img/elements-lunari.png" alt="Elements"></div>
             <h3>Cadeira Gamer Elements Lunari</h3>
+            <p class="desc">Conforto tático. Ergonomia de elite projetada para suportar horas de maratona de código sem comprometer sua postura.</p>
             <div class="price-row"><span class="val">R$ 1.601,85</span><a href="https://www.amazon.com.br/dp/B0DB2H6C4W?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
@@ -170,85 +180,17 @@
             <div class="tag">Input Unit</div>
             <div class="img-box"><img src="assets/img/controle-xbox.png" alt="Xbox Green"></div>
             <h3>Controle Xbox Velocity Green</h3>
+            <p class="desc">O controle total. Precisão milimétrica e pegada profissional no ecossistema Velocity para dominar qualquer plataforma.</p>
             <div class="price-row"><span class="val">R$ 388,25</span><a href="https://www.amazon.com.br/dp/B0BXQ5RMNV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
         </article>
 
-        <article class="card">
-            <div class="tag">OLED Ultimate</div>
-            <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png" alt="Odyssey G9"></div>
-            <h3>Samsung Odyssey OLED G9 49"</h3>
-            <div class="price-row"><span class="val">R$ 8.187,08</span><a href="https://www.amazon.com.br/dp/B0D3J4XL2C?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Graphics Core</div>
-            <div class="img-box"><img src="assets/img/zotac-rtx-5060ti.png" alt="RTX 5060 Ti"></div>
-            <h3>Zotac Gaming RTX 5060 Ti</h3>
-            <div class="price-row"><span class="val">R$ 4.299,00</span><a href="https://www.amazon.com.br/dp/B0F58SZFSR?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">CPU Unit</div>
-            <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
-            <h3>Intel Core i9-14900KS</h3>
-            <div class="price-row"><span class="val">R$ 6.951,90</span><a href="https://www.amazon.com.br/dp/B0CY3998PK?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Storage Unit</div>
-            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
-            <h3>Kingston NV3 1TB PCIe 4.0</h3>
-            <div class="price-row"><span class="val">R$ 910,00</span><a href="https://www.amazon.com.br/dp/B0DBR3DZWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Handheld Unit</div>
-            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ROG Ally"></div>
-            <h3>ASUS ROG Ally Z1 Extreme</h3>
-            <div class="price-row"><span class="val">OFERTA</span><a href="https://www.amazon.com.br/dp/B0C56YGYF4?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Mainboard</div>
-            <div class="img-box"><img src="assets/img/z890-hero.png" alt="Z890 Hero"></div>
-            <h3>ASUS ROG Maximus Z890 Hero</h3>
-            <div class="price-row"><span class="val">R$ 3.735,00</span><a href="https://www.amazon.com.br/dp/B0DGWWRTPV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Visual Unit</div>
-            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
-            <h3>LG UltraGear 27" 180Hz IPS</h3>
-            <div class="price-row"><span class="val">R$ 1.015,54</span><a href="https://www.amazon.com.br/dp/B0DB6DF87Y?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Input Mouse</div>
-            <div class="img-box"><img src="assets/img/gpro-dex.png" alt="G Pro X"></div>
-            <h3>Logitech G Pro X Superlight 2</h3>
-            <div class="price-row"><span class="val">R$ 829,99</span><a href="https://www.amazon.com.br/dp/B0DNRRZNCM?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">RAM Unit</div>
-            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM Fury"></div>
-            <h3>Kingston FURY Beast 16GB</h3>
-            <div class="price-row"><span class="val">R$ 1.102,00</span><a href="https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Storage Small</div>
-            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
-            <h3>Kingston NV3 500GB Gen4</h3>
-            <div class="price-row"><span class="val">R$ 669,00</span><a href="https://www.amazon.com.br/dp/B0DBR9RZLV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-    </main>
+        </main>
 
     <footer>
         <p class="amazon-clause">"Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas."</p>
         <p class="name">GUILLERMO ROGER</p>
         <p class="role">Monitor de Mercado & Tech Analytics</p>
-        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05);">
             <p class="copy">© 2026 Guillermo Roger Hernandez Chandia</p>
             <p class="copy">Todos os Direitos Reservados</p>
         </div>
@@ -257,15 +199,15 @@
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 110, "density": { "enable": true, "value_area": 900 } },
                 "color": { "value": "#00e5ff" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 4, "size_min": 0.3, "sync": false } },
+                "opacity": { "value": 0.65, "random": true, "anim": { "enable": true, "speed": 1.2, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 4.5, "random": true, "anim": { "enable": true, "speed": 5, "size_min": 0.4, "sync": false } },
                 "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 2, "direction": "top", "random": true, "out_mode": "out", "bounce": false }
+                "move": { "enable": true, "speed": 2.2, "direction": "top", "random": true, "out_mode": "out", "bounce": false }
             },
-            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" } }, "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2, "opacity": 1 } } },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" } }, "modes": { "bubble": { "distance": 220, "size": 7, "duration": 2, "opacity": 1 } } },
             "retina_detect": true
         });
     </script>
