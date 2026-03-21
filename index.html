@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Analytics | Monitor de Mercado de Elite</title>
+    <title>Tech Analytics | Cosmic Dashboard v1.0 (Hardware Update)</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* (c) 2026 Guillermo Roger Hernandez Chandia */
+        /* (c) 2026 Roger Hernandez - ADS | DESIGN ORIGINAL v1.0 */
         :root {
             --neon-blue: #00f2ff;
             --neon-purple: #bd00ff;
@@ -18,109 +18,124 @@
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: var(--deep-black);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden; display: flex;
-            justify-content: center; align-items: flex-start;
-            padding: 40px 0;
+            overflow: hidden; display: flex;
+            justify-content: center; align-items: center; /* CENTRALIZAÇÃO TOTAL DO PAINEL */
         }
 
         #three-container { position: fixed; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; }
 
         .ui-overlay {
-            position: relative; z-index: 10; width: 95%; max-width: 1400px;
+            position: relative; z-index: 10;
             display: flex; justify-content: center; align-items: center;
         }
 
+        /* O PAINEL DE GLASSMORFISMO ORIGINAL (image_d38a66.png) */
         .tactical-core {
-            background: rgba(10, 10, 25, 0.85);
-            backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            border-radius: 40px; padding: 50px;
-            width: 100%; text-align: center;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 25, 0.65); /* Fundo transparente */
+            backdrop-filter: blur(25px) saturate(180%); /* Efeito de Blur */
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(0, 242, 255, 0.25); /* Borda Neon Blue */
+            border-radius: 40px; /* Bordas Redondadas */
+            padding: 50px; text-align: center;
+            width: 90vw; max-width: 1300px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            /* Garante que o painel flutue no meio */
+            display: flex; flex-direction: column; align-items: center;
         }
 
         h1 {
-            font-size: 2.8rem; letter-spacing: 15px;
+            font-size: 2.5rem; letter-spacing: 12px;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px var(--neon-blue)); margin-bottom: 50px;
+            filter: drop-shadow(0 0 10px var(--neon-blue)); margin-bottom: 40px;
             text-transform: uppercase; font-weight: 800;
         }
 
-        /* GRID TÁTICO DE 10 ITENS */
+        /* SHOWCASE CENTRALIZADA NO PAINEL (image_d38a66.png style) */
         .showcase { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-            gap: 25px; 
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+            width: 100%;
+            margin-bottom: 30px;
+            justify-items: center; /* Centraliza os itens internamente */
         }
 
         .unit-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px; padding: 25px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px; padding: 15px;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex; flex-direction: column; align-items: center;
-            cursor: pointer; position: relative;
+            cursor: pointer; width: 100%; max-width: 260px;
         }
 
         .unit-card:hover {
             border-color: var(--neon-blue);
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(0, 242, 255, 0.08);
-            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.25);
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
         }
 
         .img-container {
-            width: 100%; height: 180px;
+            width: 100%; height: 160px;
             display: flex; justify-content: center; align-items: center;
-            margin-bottom: 15px;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
-            border-radius: 20px;
+            margin-bottom: 10px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+            border-radius: 15px;
         }
 
-        .product-img { max-height: 150px; max-width: 90%; transition: 0.5s; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .product-img { max-height: 140px; max-width: 85%; transition: 0.5s; }
 
         .badge {
             background: var(--neon-green); color: #000;
-            font-size: 0.6rem; font-weight: 900; padding: 4px 10px;
-            border-radius: 50px; margin-bottom: 10px; text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.55rem; font-weight: 900; padding: 3px 8px;
+            border-radius: 50px; margin-bottom: 8px; text-transform: uppercase;
         }
 
-        h3 { color: #fff; font-size: 0.95rem; margin: 0; font-weight: 700; height: 45px; line-height: 1.2; }
-        .price { font-size: 1.7rem; color: #fff; font-weight: 800; margin: 15px 0; }
-        .price span { font-size: 0.8rem; opacity: 0.8; margin-right: 2px; }
+        h3 { color: #fff; font-size: 0.85rem; margin: 0; font-weight: 700; height: 35px; line-height: 1.2; }
+        .price { font-size: 1.5rem; color: #fff; font-weight: 800; margin: 10px 0; }
+        .price span { font-size: 0.7rem; opacity: 0.7; margin-right: 2px; }
 
         button {
             background: transparent; border: 2px solid var(--neon-blue);
-            color: var(--neon-blue); padding: 12px; border-radius: 12px;
-            cursor: pointer; font-weight: 800; text-transform: uppercase;
-            font-size: 0.8rem; width: 100%; transition: 0.3s ease-in-out;
-            letter-spacing: 1px;
+            color: var(--neon-blue); padding: 8px; border-radius: 8px;
+            cursor: pointer; font-weight: 700; text-transform: uppercase;
+            font-size: 0.7rem; width: 100%; transition: 0.3s;
         }
 
-        .unit-card:hover button { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
+        .unit-card:hover button { background: var(--neon-blue); color: #000; }
 
-        /* RODAPÉ PROFISSIONAL (CLEAN & LEGAL) */
+        /* RODAPÉ INTEGRADO AO PAINEL E SEM RU (CLEAN PRO) */
         footer {
-            margin-top: 50px; padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px; padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
         }
 
-        .copyright { color: #fff; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
+        .copyright { color: #888; font-size: 0.8rem; margin-bottom: 10px; }
 
         .disclaimer-box {
-            max-width: 850px; margin: 0 auto; padding: 20px;
-            background: rgba(0, 0, 0, 0.4); border-radius: 15px;
+            max-width: 900px; margin: 0 auto; padding: 15px;
+            background: rgba(0, 0, 0, 0.3); border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .disclaimer-text { color: #888; font-size: 0.72rem; line-height: 1.6; margin: 0; text-transform: none; text-align: justify; }
+        .disclaimer-text { color: #666; font-size: 0.65rem; line-height: 1.5; margin: 0; text-transform: none; text-align: justify; }
 
-        .status-badge { color: var(--neon-blue); font-size: 0.65rem; font-weight: 800; letter-spacing: 4px; margin-top: 20px; opacity: 0.8; }
+        .status-badge { color: var(--neon-blue); font-size: 0.6rem; font-weight: 800; letter-spacing: 3px; margin-top: 15px; opacity: 0.7; }
 
-        @media (max-width: 768px) { h1 { font-size: 1.8rem; letter-spacing: 8px; } .tactical-core { padding: 30px 15px; } }
+        /* Ajustes para telas menores (Responsividade do Painel) */
+        @media (max-width: 768px) {
+            .tactical-core { padding: 30px 15px; width: 95vw; }
+            h1 { font-size: 1.8rem; letter-spacing: 6px; }
+            .showcase { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .unit-card { padding: 10px; max-width: 100%; }
+            .img-container { height: 120px; }
+            .product-img { max-height: 100px; }
+            .price { font-size: 1.2rem; }
+            h3 { font-size: 0.75rem; height: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -136,7 +151,7 @@
                     <div class="img-container"><img src="assets/g9-oled.png" class="product-img"></div>
                     <h3>SAMSUNG ODYSSEY G9 49"</h3>
                     <div class="price"><span>R$</span> 8.187,08</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0F58SZFSR?tag=guillermote08-20', '_blank')">
@@ -144,7 +159,7 @@
                     <div class="img-container"><img src="assets/rtx5060ti.png" class="product-img"></div>
                     <h3>ZOTAC RTX 5060 TI 16GB</h3>
                     <div class="price"><span>R$</span> 4.299,00</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0CY3998PK?tag=guillermote08-20', '_blank')">
@@ -152,7 +167,7 @@
                     <div class="img-container"><img src="assets/i9-14900ks.png" class="product-img"></div>
                     <h3>INTEL CORE I9-14900KS</h3>
                     <div class="price"><span>R$</span> 6.951,90</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DBR3DZWG?tag=guillermote08-20', '_blank')">
@@ -160,7 +175,7 @@
                     <div class="img-container"><img src="assets/nv3-1tb.png" class="product-img"></div>
                     <h3>KINGSTON NV3 1TB GEN4</h3>
                     <div class="price"><span>R$</span> 910,00</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0C56YGYF4?tag=guillermote08-20', '_blank')">
@@ -168,7 +183,7 @@
                     <div class="img-container"><img src="assets/rog-ally.png" class="product-img"></div>
                     <h3>ASUS ROG ALLY Z1 EXTREME</h3>
                     <div class="price"><span>R$</span> OFERTAS</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DGWWRTPV?tag=guillermote08-20', '_blank')">
@@ -176,7 +191,7 @@
                     <div class="img-container"><img src="assets/z890-hero.png" class="product-img"></div>
                     <h3>ASUS ROG MAXIMUS Z890</h3>
                     <div class="price"><span>R$</span> 3.735,00</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DB6DF87Y?tag=guillermote08-20', '_blank')">
@@ -184,7 +199,7 @@
                     <div class="img-container"><img src="assets/lg-ultragear.png" class="product-img"></div>
                     <h3>LG ULTRAGEAR 27" 180HZ</h3>
                     <div class="price"><span>R$</span> 1.015,54</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DNRRZNCM?tag=guillermote08-20', '_blank')">
@@ -192,35 +207,35 @@
                     <div class="img-container"><img src="assets/mouse-gpro.png" class="product-img"></div>
                     <h3>LOGITECH G PRO X 2 DEX</h3>
                     <div class="price"><span>R$</span> 829,99</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20', '_blank')">
                     <div class="badge">DYNAMIC MEMORY</div>
                     <div class="img-container"><img src="assets/fury-ram.png" class="product-img"></div>
-                    <h3>KINGSTON FURY 16GB KIT</h3>
+                    <h3>KINGSTON FURY 16GB kit</h3>
                     <div class="price"><span>R$</span> 1.102,00</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
                 <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DBR9RZLV?tag=guillermote08-20', '_blank')">
                     <div class="badge">FAST STORAGE</div>
                     <div class="img-container"><img src="assets/nv3-500.png" class="product-img"></div>
-                    <h3>KINGSTON NV3 500GB GEN4</h3>
+                    <h3>KINGSTON NV3 500GB</h3>
                     <div class="price"><span>R$</span> 669,00</div>
-                    <button>VERIFICAR DISPONIBILIDADE</button>
+                    <button>CARRINHO</button>
                 </div>
 
             </div>
 
             <footer>
-                <div class="copyright">(c) 2026 ● GUILLERMO ROGER HERNANDEZ CHANDIA</div>
+                <div class="copyright">© 2026 ● GUILLERMO ROGER HERNANDEZ CHANDIA</div>
                 <div class="disclaimer-box">
                     <p class="disclaimer-text">
-                        <strong>AVISO DE TRANSPARÊNCIA:</strong> Como um associado da Amazon, recebo comissões por compras qualificadas efetuadas através dos links disponibilizados neste monitor de mercado. Os preços, estoque e disponibilidade dos produtos são dinâmicos e de inteira responsabilidade da plataforma Amazon.com.br. Este dashboard atua apenas como uma interface analítica de hardware.
+                        <strong>AVISO DE TRANSPARÊNCIA:</strong> Como associado Amazon, recebo comissões por compras qualificadas efetuadas através dos links disponibilizados neste monitor de hardware. Os preços e a disponibilidade são de responsabilidade da Amazon.com.br.
                     </p>
                 </div>
-                <div class="status-badge">● MONITOR DE MERCADO | SISTEMA AUDITADO ●</div>
+                <div class="status-badge">● SISTEMA MONITOR DE MERCADO VERIFICADO ●</div>
             </footer>
             
         </div>
@@ -244,7 +259,7 @@
         document.getElementById('three-container').appendChild(renderer.domElement);
         const starsGeometry = new THREE.BufferGeometry();
         const starsVertices = [];
-        for (let i = 0; i < 12000; i++) { starsVertices.push(Math.random()*2000-1000, Math.random()*2000-1000, Math.random()*2000-1000); }
+        for (let i = 0; i < 15000; i++) { starsVertices.push(Math.random()*2000-1000, Math.random()*2000-1000, Math.random()*2000-1000); }
         starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
         const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2.2, map: createCircleTexture(), transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending });
         const stars = new THREE.Points(starsGeometry, starsMaterial); scene.add(stars);
