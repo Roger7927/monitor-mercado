@@ -3,302 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Guillermo Roger Hernandez Chandia">
-    <meta name="copyright" content="© 2026 Guillermo Roger Hernandez Chandia">
-    <title>Tech Analytics | Cosmic Dashboard</title>
+    <title>Tech Analytics | Monitor de Mercado Cosmic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
+        /* (c) 2026 Roger Hernandez - ADS */
         :root {
-            --bg: #050505;
-            --card-bg: #111111;
-            --accent: #00e5ff; 
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            --border: #1f1f1f;
-            --highlight: #ff00ff;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bd00ff;
+            --neon-green: #00ff88;
+            --deep-black: #010103;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--deep-black);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; display: flex;
+            justify-content: center; align-items: flex-start;
+            padding: 40px 0;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.1;
-            z-index: 0;
+        #three-container { position: fixed; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; }
+
+        .ui-overlay {
+            position: relative; z-index: 10; width: 95%; max-width: 1400px;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 120px;
-            z-index: 1;
-            position: relative;
+        .tactical-core {
+            background: rgba(10, 10, 25, 0.75);
+            backdrop-filter: blur(35px) saturate(180%);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 40px; padding: 40px;
+            width: 100%; text-align: center;
         }
 
-        header h1 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6em;
-            color: var(--accent);
-            margin-bottom: 15px;
-            text-shadow: 0 0 15px var(--accent);
+        h1 {
+            font-size: 2.5rem; letter-spacing: 12px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px var(--neon-blue)); margin-bottom: 40px;
+            text-transform: uppercase; font-weight: 800;
         }
 
-        header .logo {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(180deg, #fff 0%, #444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        header .logo::after {
-            content: 'COSMIC';
-            position: absolute;
-            bottom: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.2rem;
-            letter-spacing: 0.8em;
-            color: var(--highlight);
-            text-shadow: 0 0 15px var(--highlight), 0 0 30px var(--highlight);
-            font-weight: 800;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1400px;
-            z-index: 1;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            transition: 0.5s;
-            backdrop-filter: blur(10px);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 30px 60px rgba(0, 229, 255, 0.15);
-        }
-
-        .img-box {
-            width: 100%;
-            height: 220px;
-            background: #fff;
-            border-radius: 20px;
+        /* GRID DE 10 ITENS - ADS RESPONSIVENESS */
+        .showcase { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 20px; 
             margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-            border: 1px solid var(--border);
         }
 
-        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .unit-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 20px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+        }
 
-        .tag {
-            color: var(--accent);
-            font-size: 0.65rem;
-            font-weight: 800;
+        .unit-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-8px);
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        }
+
+        .img-container {
+            width: 100%; height: 180px;
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 10px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+            border-radius: 15px;
+        }
+
+        .product-img { max-height: 150px; max-width: 85%; transition: 0.5s; }
+        .unit-card:hover .product-img { transform: scale(1.05); }
+
+        .badge {
+            background: var(--neon-green); color: #000;
+            font-size: 0.55rem; font-weight: 900; padding: 3px 8px;
+            border-radius: 50px; margin-bottom: 8px; text-transform: uppercase;
+        }
+
+        h3 { color: #fff; font-size: 0.9rem; margin: 0; font-weight: 700; height: 40px; }
+        .price { font-size: 1.6rem; color: #fff; font-weight: 800; margin: 10px 0; }
+        .price span { font-size: 0.8rem; opacity: 0.7; }
+
+        button {
+            background: transparent; border: 2px solid var(--neon-blue);
+            color: var(--neon-blue); padding: 10px; border-radius: 8px;
+            cursor: pointer; font-weight: 700; text-transform: uppercase;
+            font-size: 0.75rem; width: 100%; transition: 0.3s;
+        }
+
+        .unit-card:hover button { background: var(--neon-blue); color: #000; }
+
+        /* RODAPÉ OFICIAL (ADS UNINTER RULES) */
+        .footer-verify {
+            margin-top: 40px; padding-top: 25px;
+            border-top: 1px solid rgba(0, 242, 255, 0.2);
+            font-size: 0.7rem; letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
         }
 
-        h3 { font-size: 1.2rem; font-weight: 600; height: 3.5rem; display: flex; align-items: center; margin-bottom: 15px; }
-
-        .price-row {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 25px;
-            border-top: 1px solid var(--border);
-        }
-
-        .val { font-size: 1.4rem; font-weight: 800; }
-
-        .btn {
-            background: var(--text-main);
-            color: var(--bg);
-            padding: 12px 20px;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 100px;
-            text-transform: uppercase;
-            transition: 0.4s;
-        }
-
-        .btn:hover { background: var(--accent); transform: scale(1.05); }
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            padding: 60px 40px;
-            width: 100%;
-            border-top: 1px solid var(--border);
-            z-index: 1;
-        }
-
-        footer .amazon-clause {
-            color: var(--accent);
-            font-size: 0.75rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            letter-spacing: 1px;
-            line-height: 1.6;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        footer .name { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
-        footer .role { color: var(--accent); font-weight: 600; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
-        footer .copy { color: var(--text-muted); font-size: 0.7rem; letter-spacing: 1px; margin-top: 10px; text-transform: uppercase; }
+        @media (max-width: 600px) { h1 { font-size: 1.8rem; letter-spacing: 6px; } }
     </style>
 </head>
 <body>
-    <header>
-        <h1>System Protocol // Operational</h1>
-        <div class="logo">Tech Analytics</div>
-    </header>
+    <div id="three-container"></div>
+    <div class="ui-overlay">
+        <div class="tactical-core">
+            <h1>TECH ANALYTICS</h1>
+            <div class="showcase">
+                
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0D3J4XL2C?tag=guillermote08-20', '_blank')">
+                    <div class="badge">OLED ULTIMATE</div>
+                    <div class="img-container"><img src="assets/g9-oled.png" class="product-img"></div>
+                    <h3>SAMSUNG ODYSSEY G9 49"</h3>
+                    <div class="price"><span>R$</span> 8.187,08</div>
+                    <button>CARRINHO</button>
+                </div>
 
-    <main class="grid">
-        <article class="card">
-            <div class="tag">Laptop Unit</div>
-            <div class="img-box"><img src="assets/img/acer-nitro-v15.png" alt="Acer Nitro"></div>
-            <h3>Acer Nitro V15 RTX 3050</h3>
-            <div class="price-row"><span class="val">R$ 5.034,05</span><a href="https://www.amazon.com.br/dp/B0FYJ67V77?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0F58SZFSR?tag=guillermote08-20', '_blank')">
+                    <div class="badge">GRAPHICS CORE</div>
+                    <div class="img-container"><img src="assets/rtx5060ti.png" class="product-img"></div>
+                    <h3>ZOTAC RTX 5060 TI 16GB</h3>
+                    <div class="price"><span>R$</span> 4.299,00</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Audio Unit</div>
-            <div class="img-box"><img src="assets/img/hyperx-cloud-2.png" alt="HyperX"></div>
-            <h3>HyperX Cloud II 7.1</h3>
-            <div class="price-row"><span class="val">R$ 530,34</span><a href="https://www.amazon.com.br/dp/B00SAYCXWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0CY3998PK?tag=guillermote08-20', '_blank')">
+                    <div class="badge">CPU UNIT</div>
+                    <div class="img-container"><img src="assets/i9-14900ks.png" class="product-img"></div>
+                    <h3>INTEL CORE I9-14900KS</h3>
+                    <div class="price"><span>R$</span> 6.951,90</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Support Unit</div>
-            <div class="img-box"><img src="assets/img/elements-lunari.png" alt="Elements"></div>
-            <h3>Cadeira Gamer Elements Lunari</h3>
-            <div class="price-row"><span class="val">R$ 1.564,62</span><a href="https://www.amazon.com.br/dp/B0DB2H6C4W?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DBR3DZWG?tag=guillermote08-20', '_blank')">
+                    <div class="badge">STORAGE UNIT</div>
+                    <div class="img-container"><img src="assets/nv3-1tb.png" class="product-img"></div>
+                    <h3>KINGSTON NV3 1TB GEN4</h3>
+                    <div class="price"><span>R$</span> 910,00</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Input Unit</div>
-            <div class="img-box"><img src="assets/img/controle-xbox.png" alt="Xbox Green"></div>
-            <h3>Controle Xbox Velocity Green</h3>
-            <div class="price-row"><span class="val">R$ 388,25</span><a href="https://www.amazon.com.br/dp/B0BXQ5RMNV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0C56YGYF4?tag=guillermote08-20', '_blank')">
+                    <div class="badge">HANDHELD UNIT</div>
+                    <div class="img-container"><img src="assets/rog-ally.png" class="product-img"></div>
+                    <h3>ASUS ROG ALLY Z1 EXTREME</h3>
+                    <div class="price"><span>R$</span> OFERTAS</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">OLED Ultimate</div>
-            <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png" alt="Odyssey G9"></div>
-            <h3>Samsung Odyssey OLED G9 49"</h3>
-            <div class="price-row"><span class="val">R$ 10.998,90</span><a href="https://www.amazon.com.br/dp/B0C79K5Y8B?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DGWWRTPV?tag=guillermote08-20', '_blank')">
+                    <div class="badge">MAINBOARD</div>
+                    <div class="img-container"><img src="assets/z890-hero.png" class="product-img"></div>
+                    <h3>ASUS ROG MAXIMUS Z890</h3>
+                    <div class="price"><span>R$</span> 3.735,00</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Graphics Core</div>
-            <div class="img-box"><img src="assets/img/zotac-rtx-5060ti.png" alt="RTX 5060 Ti"></div>
-            <h3>Zotac Gaming RTX 5060 Ti</h3>
-            <div class="price-row"><span class="val">R$ 4.098,00</span><a href="https://www.amazon.com.br/dp/B0C6BC9ZDR?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DB6DF87Y?tag=guillermote08-20', '_blank')">
+                    <div class="badge">VISUAL UNIT</div>
+                    <div class="img-container"><img src="assets/lg-ultragear.png" class="product-img"></div>
+                    <h3>LG ULTRAGEAR 27" 180HZ</h3>
+                    <div class="price"><span>R$</span> 1.015,54</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">CPU Unit</div>
-            <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
-            <h3>Intel Core i9-14900KS</h3>
-            <div class="price-row"><span class="val">R$ 6.951,90</span><a href="https://www.amazon.com.br/dp/B0CW19R9P8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DNRRZNCM?tag=guillermote08-20', '_blank')">
+                    <div class="badge">INPUT MOUSE</div>
+                    <div class="img-container"><img src="assets/mouse-gpro.png" class="product-img"></div>
+                    <h3>LOGITECH G PRO X 2 DEX</h3>
+                    <div class="price"><span>R$</span> 829,99</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Storage Unit</div>
-            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
-            <h3>Kingston NV3 1TB PCIe 4.0</h3>
-            <div class="price-row"><span class="val">R$ 910,00</span><a href="https://www.amazon.com.br/dp/B0D9S7V9D4?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20', '_blank')">
+                    <div class="badge">DYNAMIC MEMORY</div>
+                    <div class="img-container"><img src="assets/fury-ram.png" class="product-img"></div>
+                    <h3>KINGSTON FURY 16GB kit</h3>
+                    <div class="price"><span>R$</span> 1.102,00</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Handheld Unit</div>
-            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ROG Ally"></div>
-            <h3>ASUS ROG Ally Z1 Extreme</h3>
-            <div class="price-row"><span class="val">OFERTA</span><a href="https://www.amazon.com.br/dp/B0C8V2Y3B2?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
+                <div class="unit-card" onclick="window.open('https://www.amazon.com.br/dp/B0DBR9RZLV?tag=guillermote08-20', '_blank')">
+                    <div class="badge">FAST STORAGE</div>
+                    <div class="img-container"><img src="assets/nv3-500.png" class="product-img"></div>
+                    <h3>KINGSTON NV3 500GB</h3>
+                    <div class="price"><span>R$</span> 669,00</div>
+                    <button>CARRINHO</button>
+                </div>
 
-        <article class="card">
-            <div class="tag">Mainboard</div>
-            <div class="img-box"><img src="assets/img/z890-hero.png" alt="Z890 Hero"></div>
-            <h3>ASUS ROG Maximus Z890 Hero</h3>
-            <div class="price-row"><span class="val">R$ 4.182,37</span><a href="https://www.amazon.com.br/dp/B0DJ2G5C5P?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Visual Unit</div>
-            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
-            <h3>LG UltraGear 27" 180Hz IPS</h3>
-            <div class="price-row"><span class="val">R$ 1.054,56</span><a href="https://www.amazon.com.br/dp/B0CQTN2T6J?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Input Mouse</div>
-            <div class="img-box"><img src="assets/img/gpro-dex.png" alt="G Pro X"></div>
-            <h3>Logitech G Pro X Superlight 2</h3>
-            <div class="price-row"><span class="val">R$ 849,99</span><a href="https://www.amazon.com.br/dp/B0C9R9K2S8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">RAM Unit</div>
-            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM Fury"></div>
-            <h3>Kingston FURY Beast 16GB</h3>
-            <div class="price-row"><span class="val">R$ 1.149,00</span><a href="https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-
-        <article class="card">
-            <div class="tag">Storage Small</div>
-            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
-            <h3>Kingston NV3 500GB Gen4</h3>
-            <div class="price-row"><span class="val">R$ 669,00</span><a href="https://www.amazon.com.br/dp/B0D9S69Y9Y?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
-        </article>
-    </main>
-
-    <footer>
-        <p class="amazon-clause">
-            "Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas."
-        </p>
-        <p class="name">GUILLERMO ROGER</p>
-        <p class="role">Monitor de Mercado & Tech Analytics</p>
-        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p class="copy">© 2026 Guillermo Roger Hernandez Chandia</p>
-            <p class="copy">Todos os Direitos Reservados</p>
+            </div>
+            
+            <div class="footer-verify">
+                <p style="color: #666; margin: 5px 0;">© 2026 - Guillermo Roger Hernandez Chandia</p>
+                <p style="color: var(--neon-blue); font-weight: 700; margin: 5px 0;">RU: 5318735 | ANÁLISE E DESENVOLVIMENTO DE SISTEMAS (ADS)</p>
+                <p style="color: var(--neon-green); font-size: 0.6rem; margin-top: 10px;">● SISTEMA VERIFICADO & UNINTER CERTIFIED ●</p>
+            </div>
+            
         </div>
-    </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas'); canvas.width = 64; canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, 64, 64);
+            return new THREE.CanvasTexture(canvas);
+        }
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setClearColor(0x010103, 1); renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('three-container').appendChild(renderer.domElement);
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsVertices = [];
+        for (let i = 0; i < 12000; i++) { starsVertices.push(Math.random()*2000-1000, Math.random()*2000-1000, Math.random()*2000-1000); }
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+        const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2.5, map: createCircleTexture(), transparent: true, opacity: 1, depthWrite: false, blending: THREE.AdditiveBlending });
+        const stars = new THREE.Points(starsGeometry, starsMaterial); scene.add(stars);
+        const pLight = new THREE.PointLight(0xbd00ff, 4, 800); pLight.position.set(200, 100, 100); scene.add(pLight);
+        const bLight = new THREE.PointLight(0x00f2ff, 4, 800); bLight.position.set(-200, -100, 100); scene.add(bLight);
+        scene.fog = new THREE.FogExp2(0x010103, 0.002); camera.position.z = 5;
+        function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0003; stars.rotation.x += 0.0001; const time = Date.now() * 0.0005; pLight.position.x = Math.sin(time) * 300; bLight.position.y = Math.cos(time) * 300; renderer.render(scene, camera); }
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }); animate();
+    </script>
 </body>
 </html>
