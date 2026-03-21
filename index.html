@@ -8,67 +8,391 @@
     <title>Tech Analytics | Cosmic Dashboard</title>
     <style>
         :root {
-            --bg: #050505; --card-bg: #111111; --accent: #00e5ff; 
-            --text-main: #ffffff; --border: #1f1f1f; --highlight: #ff00ff;
+            --bg: #050505;
+            --card-bg: #111111;
+            --accent: #00e5ff; /* Cyan Neon */
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --border: #1f1f1f;
+            --highlight: #ff00ff; /* Magenta Neon */
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif;
-            padding: 60px 20px; display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden; position: relative;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif; /* Fallback for 'Inter' */
+            /* Link para fonte Inter se necessário: <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"> */
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
         }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1400px; z-index: 1; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 28px; padding: 35px; display: flex; flex-direction: column; transition: 0.5s; backdrop-filter: blur(10px); }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0, 229, 255, 0.15); }
-        .img-box { width: 100%; height: 220px; background: #fff; border-radius: 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; padding: 25px; }
-        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .tag { color: var(--accent); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-        h3 { font-size: 1.2rem; font-weight: 600; height: 3.5rem; display: flex; align-items: center; margin-bottom: 15px; }
-        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
-        .val { font-size: 1.4rem; font-weight: 800; }
-        .btn { background: var(--text-main); color: var(--bg); padding: 12px 20px; text-decoration: none; font-weight: 700; border-radius: 100px; text-transform: uppercase; transition: 0.4s; }
-        .btn:hover { background: var(--accent); transform: scale(1.05); }
+
+        /* Linhas de Grade de Fundo (Efeito Cyber) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            z-index: 1;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6em;
+            color: var(--accent);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px var(--accent);
+        }
+
+        header .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #fff 0%, #444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        header .logo::after {
+            content: 'COSMIC';
+            position: absolute;
+            bottom: -25px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            letter-spacing: 0.5em;
+            color: var(--highlight);
+            text-shadow: 0 0 10px var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1400px;
+            z-index: 1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0, 229, 255, 0.15);
+        }
+
+        /* Efeito de Brilho no Hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .img-box {
+            width: 100%;
+            height: 220px;
+            background: #fff; /* Fundo branco para destacar o produto */
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Garante que a imagem não corte */
+        }
+
+        .tag {
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            height: 3.5rem; /* Altura fixa para alinhar os cards */
+            display: flex;
+            align-items: center;
+        }
+
+        .price-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .val {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .btn {
+            background: var(--text-main);
+            color: var(--bg);
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px;
+            width: 100%;
+            max-width: 1400px;
+            border-top: 1px solid var(--border);
+            z-index: 1;
+            position: relative;
+        }
+
+        footer .name {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        footer .role {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+        }
+
+        footer .copy {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
     </style>
 </head>
 <body>
-    <header style="text-align: center; margin-bottom: 80px;">
-        <h1 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.6em; color: var(--accent); margin-bottom: 15px;">System Protocol // Operational</h1>
-        <div style="font-size: 4rem; font-weight: 900; background: linear-gradient(180deg, #fff 0%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Tech Analytics</div>
+    <header>
+        <h1>System Protocol // Operational</h1>
+        <div class="logo">Tech Analytics</div>
     </header>
 
     <main class="grid">
         <article class="card">
             <div class="tag">Laptop Unit</div>
-            <div class="img-box"><img src="assets/img/acer-nitro-v15.png" alt="Acer Nitro"></div>
+            <div class="img-box"><img src="assets/img/acer-nitro-v15.png" alt="Acer Nitro V15"></div>
             <h3>Acer Nitro V15 RTX 3050</h3>
-            <div class="price-row"><span class="val">R$ 5.034,05</span><a href="https://www.amazon.com.br/dp/B0FYJ67V77?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+            <div class="price-row">
+                <span class="val">R$ 5.034,05</span>
+                <a href="https://www.amazon.com.br/dp/B0FYJ67V77?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
         </article>
 
         <article class="card">
             <div class="tag">Audio Unit</div>
-            <div class="img-box"><img src="assets/img/hyperx-cloud-2.png" alt="HyperX"></div>
+            <div class="img-box"><img src="assets/img/hyperx-cloud-2.png" alt="HyperX Cloud II"></div>
             <h3>HyperX Cloud II 7.1</h3>
-            <div class="price-row"><span class="val">R$ 530,34</span><a href="https://www.amazon.com.br/dp/B00SAYCXWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+            <div class="price-row">
+                <span class="val">R$ 530,34</span>
+                <a href="https://www.amazon.com.br/dp/B00SAYCXWG?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
         </article>
 
         <article class="card">
             <div class="tag">Support Unit</div>
-            <div class="img-box"><img src="assets/img/elements-lunari.png" alt="Elements"></div>
+            <div class="img-box"><img src="assets/img/elements-lunari.png" alt="Elements Lunari"></div>
             <h3>Cadeira Gamer Elements Lunari</h3>
-            <div class="price-row"><span class="val">R$ 1.564,62</span><a href="https://www.amazon.com.br/dp/B0DB2H6C4W?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+            <div class="price-row">
+                <span class="val">R$ 1.564,62</span>
+                <a href="https://www.amazon.com.br/dp/B0DB2H6C4W?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
         </article>
 
         <article class="card">
             <div class="tag">Input Unit</div>
-            <div class="img-box"><img src="assets/img/controle-xbox.png" alt="Controle Xbox"></div>
+            <div class="img-box"><img src="assets/img/controle-xbox.png" alt="Controle Xbox Velocity Green"></div>
             <h3>Controle Xbox Velocity Green</h3>
-            <div class="price-row"><span class="val">R$ 388,25</span><a href="https://www.amazon.com.br/dp/B0BXQ5RMNV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a></div>
+            <div class="price-row">
+                <span class="val">R$ 388,25</span>
+                <a href="https://www.amazon.com.br/dp/B0BXQ5RMNV?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">OLED Ultimate</div>
+            <div class="img-box"><img src="assets/img/monitor-odyssey-oled-g9.png" alt="Odyssey G9"></div>
+            <h3>Samsung Odyssey OLED G9 49"</h3>
+            <div class="price-row">
+                <span class="val">R$ 10.998,90</span>
+                <a href="https://www.amazon.com.br/dp/B0C79K5Y8B?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Graphics Core</div>
+            <div class="img-box"><img src="assets/img/zotac-rtx-5060ti.png" alt="RTX 5060 Ti"></div>
+            <h3>Zotac Gaming RTX 5060 Ti</h3>
+            <div class="price-row">
+                <span class="val">R$ 4.098,00</span>
+                <a href="https://www.amazon.com.br/dp/B0C6BC9ZDR?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">CPU Unit</div>
+            <div class="img-box"><img src="assets/img/i9-14900ks.png" alt="i9 14900KS"></div>
+            <h3>Intel Core i9-14900KS</h3>
+            <div class="price-row">
+                <span class="val">R$ 6.951,90</span>
+                <a href="https://www.amazon.com.br/dp/B0CW19R9P8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage Unit</div>
+            <div class="img-box"><img src="assets/img/ssd-1tb.png" alt="SSD 1TB"></div>
+            <h3>Kingston NV3 1TB PCIe 4.0</h3>
+            <div class="price-row">
+                <span class="val">R$ 910,00</span>
+                <a href="https://www.amazon.com.br/dp/B0D9S7V9D4?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Handheld Unit</div>
+            <div class="img-box"><img src="assets/img/rog-ally.png" alt="ROG Ally"></div>
+            <h3>ASUS ROG Ally Z1 Extreme</h3>
+            <div class="price-row">
+                <span class="val">OFERTA</span>
+                <a href="https://www.amazon.com.br/dp/B0C8V2Y3B2?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Mainboard</div>
+            <div class="img-box"><img src="assets/img/z890-hero.png" alt="Z890 Hero"></div>
+            <h3>ASUS ROG Maximus Z890 Hero</h3>
+            <div class="price-row">
+                <span class="val">R$ 4.182,37</span>
+                <a href="https://www.amazon.com.br/dp/B0DJ2G5C5P?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Visual Unit</div>
+            <div class="img-box"><img src="assets/img/monitor-lg-27.png" alt="LG 27"></div>
+            <h3>LG UltraGear 27" 180Hz IPS</h3>
+            <div class="price-row">
+                <span class="val">R$ 1.054,56</span>
+                <a href="https://www.amazon.com.br/dp/B0CQTN2T6J?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Input Mouse</div>
+            <div class="img-box"><img src="assets/img/gpro-dex.png" alt="G Pro X"></div>
+            <h3>Logitech G Pro X Superlight 2</h3>
+            <div class="price-row">
+                <span class="val">R$ 849,99</span>
+                <a href="https://www.amazon.com.br/dp/B0C9R9K2S8?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">RAM Unit</div>
+            <div class="img-box"><img src="assets/img/ram-16gb.png" alt="RAM Fury"></div>
+            <h3>Kingston FURY Beast 16GB</h3>
+            <div class="price-row">
+                <span class="val">R$ 1.149,00</span>
+                <a href="https://www.amazon.com.br/dp/B097K2WBL3?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="tag">Storage Small</div>
+            <div class="img-box"><img src="assets/img/ssd-500gb.png" alt="SSD 500GB"></div>
+            <h3>Kingston NV3 500GB Gen4</h3>
+            <div class="price-row">
+                <span class="val">R$ 669,00</span>
+                <a href="https://www.amazon.com.br/dp/B0D9S69Y9Y?tag=guillermote08-20" target="_blank" class="btn">🛒 Carrinho</a>
+            </div>
         </article>
     </main>
 
-    <footer style="margin-top: 100px; text-align: center; padding: 40px; border-top: 1px solid var(--border);">
-        <p style="font-size: 1.8rem; font-weight: 900; text-transform: uppercase;">Guillermo Roger Hernandez Chandia</p>
-        <p style="opacity: 0.5; font-size: 0.75rem; letter-spacing: 1px;">© 2026 - TODOS OS DIREITOS RESERVADOS - ADS UNINTER</p>
+    <footer>
+        <p class="name">GUILLERMO ROGER</p>
+        <p class="role">Análise e Desenvolvimento de Sistemas</p>
+        <p class="copy">© 2026 Guillermo Roger Hernandez Chandia - ADS UNINTER - TODOS OS DIREITOS RESERVADOS</p>
     </footer>
 </body>
 </html>
